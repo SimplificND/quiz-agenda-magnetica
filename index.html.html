@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Agenda Magnética™ | Descubra onde sua competência está ficando invisível</title>
+<meta name="description" content="Você é valiosa — mas competência guardada não enche agenda. Descubra onde a sua está presa na gaveta, e o que isso te custa.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --t:#15605A;--t-d:#0F4E49;--a:#B8893C;--gold-l:#D4B26A;--dk:#0C3B38;
+  --bg:#EFE7D4;--paper:#FAF5E9;--ink:#1B2A28;--m:#7E8A85;--br:#DCD2BC;
+  --rad:12px;--radl:16px;
+  --red:#A3402D;--red-bg:#F6E5DF;--amb:#A6701A;--amb-bg:#F7EED7;--grn:#1E7A66;--grn-bg:#E0EFE6;
+  --shadow:0 2px 16px rgba(12,59,56,.07);--shadow-lg:0 14px 44px rgba(12,59,56,.14);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;padding:1.5rem 1rem 4rem;line-height:1.5;
+  background-image:radial-gradient(circle at 15% 0%,rgba(184,137,60,.08),transparent 45%),radial-gradient(circle at 85% 100%,rgba(21,96,90,.07),transparent 42%)}
+.serif{font-family:'Fraunces',serif;font-weight:400;font-optical-sizing:auto}
+.wrap{max-width:640px;margin:0 auto}
+.screen{display:none}
+.screen.active{display:block;animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ICON SYSTEM (inline SVG — sem dependência de fonte externa) */
+.ic{display:inline-flex;align-items:center;justify-content:center;width:1.05em;height:1.05em;vertical-align:-.15em}
+.ic svg{width:100%;height:100%;display:block}
+
+/* COMPASS SIGNATURE */
+.compass{display:block;margin:0 auto}
+.compass .cmp-ring{stroke:var(--a);stroke-width:1.4;fill:none;opacity:.55}
+.compass .cmp-ring2{stroke:var(--a);stroke-width:1;fill:none;opacity:.32}
+.compass .cmp-ticks{stroke:var(--a);stroke-width:2;stroke-linecap:round;opacity:.8}
+.compass .cmp-needle{transform-origin:60px 60px;animation:sway 7s ease-in-out infinite}
+.compass .ndl-n{fill:var(--a)}.compass .ndl-s{fill:rgba(184,137,60,.32)}
+.compass .ndl-w,.compass .ndl-e{fill:rgba(184,137,60,.4)}
+.compass .cmp-center{fill:var(--a)}
+.compass.on-dark .cmp-ring,.compass.on-dark .cmp-ring2,.compass.on-dark .cmp-ticks{stroke:var(--gold-l)}
+.compass.on-dark .ndl-n,.compass.on-dark .cmp-center{fill:var(--gold-l)}
+@keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:var(--rad);font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s;text-decoration:none}
+.btn-pri{background:var(--t);color:#fff;padding:15px 30px;box-shadow:0 4px 14px rgba(21,96,90,.26)}
+.btn-pri:hover{background:var(--t-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,96,90,.32)}
+.btn-pri:active{transform:scale(.98)}.btn-pri.full{width:100%}
+.btn-gold{background:var(--a);color:var(--dk);padding:14px 28px;font-weight:600}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1px solid var(--br);color:var(--m);padding:11px 20px;font-size:14px}
+.btn-ghost:hover{border-color:var(--t);color:var(--t)}
+.btn-next{background:var(--t);color:#fff;padding:11px 24px;font-size:14px;opacity:.3;pointer-events:none}
+.btn-next.on{opacity:1;pointer-events:auto}.btn-next.on:hover{background:var(--t-d)}
+
+/* INTRO */
+.intro{text-align:center;padding:2rem 0 1rem}
+.intro-sig{position:relative;display:inline-block;margin-bottom:1.5rem}
+.intro-sig::after{content:'';position:absolute;inset:-22%;background:radial-gradient(circle,rgba(184,137,60,.2),transparent 65%);z-index:-1}
+.kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--a);margin-bottom:1.4rem}
+.kicker::before,.kicker::after{content:'';width:22px;height:1px;background:var(--br)}
+.intro h1{font-size:clamp(28px,7vw,40px);line-height:1.12;letter-spacing:-.01em;margin-bottom:1.1rem}
+.intro h1 em{font-style:italic;color:var(--t);position:relative}
+.intro h1 em::after{content:'';position:absolute;left:0;right:0;bottom:.04em;height:.5em;background:rgba(184,137,60,.25);z-index:-1;border-radius:2px}
+.intro-sub{font-size:16px;line-height:1.6;color:#4C5A57;max-width:480px;margin:0 auto 2.2rem}
+.intro-foot{margin-top:1.6rem;font-size:13px;color:var(--m);display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.intro-foot span{display:inline-flex;align-items:center;gap:6px}.intro-foot .ic{color:var(--a)}
+
+/* RAIL */
+.rail{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;padding:0 4px;position:relative}
+.rail::before{content:'';position:absolute;top:11px;left:9%;right:9%;height:2px;background:var(--br);z-index:0}
+.rail-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;text-align:center}
+.rail-dot{width:24px;height:24px;border-radius:50%;background:var(--bg);border:2px solid var(--br);display:flex;align-items:center;justify-content:center;transition:all .35s}
+.rail-dot .ic{font-size:12px;color:var(--m);transition:color .35s}
+.rail-label{font-size:10.5px;font-weight:500;color:var(--m);line-height:1.25;transition:color .35s}
+.rail-node.done .rail-dot{background:var(--t);border-color:var(--t)}.rail-node.done .rail-dot .ic{color:#fff}
+.rail-node.done .rail-label{color:#5C6A66}
+.rail-node.now .rail-dot{background:#fff;border-color:var(--a);box-shadow:0 0 0 4px rgba(184,137,60,.16)}
+.rail-node.now .rail-dot .ic{color:var(--a)}.rail-node.now .rail-label{color:var(--t);font-weight:600}
+
+/* PROGRESS */
+.prog{margin-bottom:1.3rem}
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem}
+.prog-l{font-size:12px;font-weight:500;color:var(--m)}.prog-p{font-size:12px;font-weight:600;color:var(--a)}
+.prog-bar{height:5px;background:var(--br);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--t));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+/* CARD / QUESTION */
+.card{background:var(--paper);border:1px solid var(--br);border-radius:var(--radl);box-shadow:var(--shadow);overflow:hidden}
+.card-tag{display:flex;align-items:center;gap:9px;padding:1rem 1.4rem;border-bottom:1px solid var(--br);background:linear-gradient(180deg,#FDFAF1,var(--paper))}
+.card-tag .ic{font-size:17px;color:var(--t)}
+.card-tag .ct-stage{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t);background:rgba(21,96,90,.1);padding:3px 9px;border-radius:20px}
+.card-tag .ct-name{font-size:13px;font-weight:500;color:#5A6864}
+.card-body{padding:1.6rem 1.4rem}
+.q-text{font-size:19px;font-weight:500;line-height:1.35;letter-spacing:-.01em;margin-bottom:1.3rem}
+.q-text .qn{color:var(--a);font-family:'Fraunces',serif;margin-right:4px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border:1.5px solid var(--br);border-radius:var(--rad);cursor:pointer;transition:all .16s;background:#fff}
+.opt:hover{border-color:rgba(21,96,90,.5);background:#F8FBF7}
+.opt.sel{border-color:var(--t);background:#EEF6F3;box-shadow:0 0 0 3px rgba(21,96,90,.1)}
+.opt .rd{width:19px;height:19px;min-width:19px;border-radius:50%;border:2px solid var(--br);margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .16s}
+.opt.sel .rd{border-color:var(--t);background:var(--t)}.opt.sel .rd::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
+.opt .ot{font-size:14.5px;line-height:1.5;color:#2E3A37}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+
+/* INSIGHT */
+.insight{background:var(--dk);border-radius:var(--radl);padding:2.2rem 1.8rem;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.insight::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:280px;height:170px;background:radial-gradient(ellipse,rgba(184,137,60,.16),transparent 70%);pointer-events:none}
+.ins-art{width:96px;height:68px;margin:0 auto .9rem;position:relative}
+.ins-art::before{content:'';position:absolute;inset:-14px 6px;border:1px solid rgba(212,178,106,.25);border-radius:50%}
+.ins-art svg{width:100%;height:100%;display:block;position:relative}
+.insight .ins-kick{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.8rem}
+.insight h3{font-family:'Fraunces',serif;font-weight:400;font-size:23px;line-height:1.25;color:#F6F0E0;margin-bottom:.9rem;letter-spacing:-.01em}
+.insight p{font-size:15px;line-height:1.65;color:#C7BCA2;max-width:460px;margin:0 auto 1.6rem}
+.insight p b{color:#ECE2CA;font-weight:600}
+
+/* LEAD */
+.lead-head{text-align:center;padding:1rem 0 1.8rem}
+.lead-head .lh-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grn);background:var(--grn-bg);padding:6px 14px;border-radius:20px;margin-bottom:1rem}
+.lead-head h2{font-family:'Fraunces',serif;font-weight:400;font-size:27px;line-height:1.2;margin-bottom:.6rem}
+.lead-head p{font-size:15px;color:#4C5A57;max-width:420px;margin:0 auto}
+.lead-form{padding:1.6rem 1.4rem}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
+.field label{font-size:11px;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.05em}
+.field input,.field textarea{background:#fff;border:1.5px solid var(--br);border-radius:var(--rad);padding:11px 14px;font-size:14.5px;color:var(--ink);outline:none;transition:border .16s,box-shadow .16s;font-family:inherit;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--t);box-shadow:0 0 0 3px rgba(21,96,90,.1)}
+.field textarea{min-height:68px}
+.lead-foot{padding:0 1.4rem 1.6rem}
+.privacy{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--m);margin-top:.9rem}
+
+/* RESULT */
+.r-card{border:1px solid var(--br);border-radius:var(--radl);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--paper)}
+.r-hero{padding:3rem 1.8rem 2.6rem;text-align:center;position:relative;overflow:hidden}
+.r-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.5),transparent 60%);pointer-events:none}
+.r-icon{width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;border:2px solid;background:#fff}
+.r-icon .ic{font-size:46px}
+.r-name{font-family:'Fraunces',serif;font-weight:400;font-size:28px;line-height:1.2;margin-bottom:1rem;letter-spacing:-.01em}
+.r-phrase{font-size:17px;font-weight:500;line-height:1.5;max-width:440px;margin:0 auto}
+.r-sec{padding:1.8rem 1.5rem;border-top:1px solid var(--br)}
+.r-sec.alt{background:#fff}
+.r-eye{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--m);margin-bottom:1.1rem}
+.r-eye .ic{font-size:15px;color:var(--t)}
+.r-sec p{font-size:14.5px;line-height:1.72;color:#2E3A37}.r-sec p+p{margin-top:.7rem}
+.drum{display:flex;gap:11px;align-items:flex-start;background:var(--grn-bg);border:1px solid #C4DDD0;border-radius:var(--rad);padding:1rem 1.1rem;margin-top:1rem}
+.drum .ic{color:var(--grn);font-size:18px;margin-top:1px}.drum p{font-size:13.5px;line-height:1.6;color:#1C4D40}
+
+/* SCORECARD */
+.scorecard{display:flex;flex-direction:column;gap:11px}
+.score-card{background:#fff;border:1px solid var(--br);border-radius:var(--rad);padding:1.1rem 1.2rem;position:relative}
+.score-card.worst{border-color:var(--a);box-shadow:0 0 0 2px rgba(184,137,60,.14)}
+.sc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:.7rem}
+.sc-titles{display:flex;flex-direction:column;gap:2px}
+.sc-funnel{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--m)}
+.sc-analogy{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);line-height:1.15}
+.sc-score{font-family:'Fraunces',serif;font-size:26px;font-weight:500;line-height:1;white-space:nowrap}
+.sc-score small{font-size:13px;color:var(--m);font-family:'Inter',sans-serif;font-weight:400}
+.sc-bar{height:7px;background:#EFE6D0;border-radius:4px;overflow:hidden;margin-bottom:.7rem}
+.sc-bar-fill{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.3,.8,.3,1)}
+.sc-desc{font-size:13px;line-height:1.6;color:#3A4744}
+.sc-here{display:inline-flex;align-items:center;gap:5px;margin-top:.7rem;font-size:11px;font-weight:600;color:var(--dk);background:var(--a);padding:4px 11px;border-radius:14px}
+.sc-here .ic{font-size:12px}
+.sc-na{font-size:12px;font-weight:600;color:var(--m);background:#EFE6D0;padding:4px 12px;border-radius:14px;white-space:nowrap}
+
+/* GAUGE */
+.gauge-panel{background:linear-gradient(165deg,#fff,#F7F0DF);border:1px solid var(--br);border-radius:var(--radl);padding:1.6rem 1.4rem 1.4rem;text-align:center}
+.gauge-cap{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--m);margin-bottom:.4rem}
+.gauge-svg{width:240px;max-width:100%;height:auto;margin:0 auto;display:block}
+.gauge-num{font-family:'Fraunces',serif;font-size:46px;font-weight:600}
+.gauge-den{font-family:'Inter',sans-serif;font-size:12px;fill:#7E8A85}
+.gauge-tierlb{display:inline-block;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:.2rem}
+.gauge-note{font-size:13.5px;line-height:1.6;color:#3A4744;margin-top:1rem}.gauge-note b{color:var(--t)}
+.zone-tag{font-size:11px;color:var(--m);margin-top:.5rem}.zone-tag b{color:var(--grn)}
+
+/* START PANEL (B) */
+.start-panel{background:linear-gradient(165deg,#0C3B38,#114E47);border-radius:var(--radl);padding:2rem 1.5rem;text-align:center;color:#F4EAD4}
+.start-panel .sp-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dk);background:var(--a);padding:6px 16px;border-radius:20px;margin-bottom:1rem}
+.start-panel h4{font-family:'Fraunces',serif;font-weight:400;font-size:24px;color:#F6F0E0;margin-bottom:.7rem}
+.start-panel p{font-size:14px;line-height:1.65;color:#C7BCA2;max-width:420px;margin:0 auto}.start-panel p b{color:var(--gold-l)}
+
+/* EMOTIONAL */
+.emo{background:var(--dk);border-radius:var(--rad);padding:1.3rem 1.4rem}
+.emo p{font-size:14.5px;line-height:1.7;color:#E0D7C0}.emo p+p{margin-top:.6rem}
+.emo .mech{display:block;margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.12);color:var(--gold-l);font-weight:500}
+
+/* COST */
+.cost{background:linear-gradient(165deg,#0A332F,#10413B);border-radius:var(--radl);padding:1.8rem 1.5rem;color:#F4EAD4;box-shadow:inset 0 0 0 1px rgba(184,137,60,.14)}
+.cost-kick{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-l);margin-bottom:1.1rem}
+.cost-kick .ic{font-size:15px}
+.cost-lead{font-size:14.5px;line-height:1.65;color:#CFC3A8;margin-bottom:1.3rem}.cost-lead b{color:#F6F0E0}
+.cost-big{text-align:center;margin-bottom:.3rem}
+.cost-big .cb-lbl{font-size:12px;color:#A99C82;margin-bottom:.3rem}
+.cost-big .cb-num{font-family:'Fraunces',serif;font-size:40px;font-weight:500;color:var(--gold-l);line-height:1}
+.cost-big .cb-sub{font-size:12.5px;color:#A99C82;margin-top:.3rem}
+.cost-daily{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(199,123,102,.16);border:1px solid rgba(199,123,102,.32);border-radius:var(--rad);padding:.7rem 1rem;margin:1.1rem 0;font-size:13.5px;color:#EEC6BB}
+.cost-daily b{color:#E9A593;font-weight:600}
+.cost-cards{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:1.1rem 0}
+.cc{background:rgba(255,255,255,.05);border:1px solid rgba(184,137,60,.18);border-radius:var(--rad);padding:1rem;text-align:center}
+.cc .cc-lbl{font-size:11px;color:#A99C82;margin-bottom:.4rem}
+.cc .cc-val{font-family:'Fraunces',serif;font-size:23px;font-weight:500;color:#F6F0E0;line-height:1}
+.cc.danger .cc-val{color:#E9A593}
+.chart-wrap{margin-top:1rem;background:rgba(0,0,0,.2);border-radius:var(--rad);padding:1.1rem 1rem .8rem}
+.chart-wrap svg{width:100%;height:auto;display:block}
+.chart-legend{display:flex;justify-content:center;gap:18px;margin-top:.7rem;flex-wrap:wrap}
+.cl{display:flex;align-items:center;gap:6px;font-size:11.5px;color:#C7BCA2}.cl .sw{width:14px;height:3px;border-radius:2px}
+.cost-tag{font-size:11px;color:#8E8268;text-align:center;margin-top:.9rem;font-style:italic}
+.cost-punch{font-size:15px;line-height:1.6;color:#F6F0E0;text-align:center;margin-top:1.2rem;font-weight:500}.cost-punch b{color:var(--gold-l)}
+
+/* MAPA CTA */
+.r-cta{background:var(--dk);padding:2.4rem 1.8rem;text-align:center;position:relative;overflow:hidden}
+.r-cta::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:320px;height:170px;background:radial-gradient(ellipse,rgba(184,137,60,.16),transparent 70%)}
+.mapa-kick{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.9rem;position:relative}
+.r-cta h3{font-family:'Fraunces',serif;font-weight:400;font-size:25px;line-height:1.2;color:#F6F0E0;margin-bottom:1rem;position:relative}
+.mapa-promise{font-size:14.5px;line-height:1.72;color:#CFC3A8;max-width:470px;margin:0 auto 1.4rem;position:relative}.mapa-promise b{color:#F6F0E0}
+.mapa-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-bottom:1.4rem;position:relative}
+.mapa-meta span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#C7BCA2}.mapa-meta .ic{color:var(--gold-l);font-size:15px}
+.mapa-anchor{font-size:13.5px;line-height:1.65;color:#C7BCA2;max-width:440px;margin:0 auto 1.5rem;position:relative}.mapa-anchor b{color:var(--gold-l)}
+.mapa-btn{position:relative;font-size:16px;padding:16px 32px}
+.mapa-price{margin-top:1rem;font-size:13.5px;color:#C7BCA2;position:relative}.mapa-price b{color:#F6F0E0;font-size:16px}
+.mapa-vagas{color:var(--gold-l);font-weight:500}
+
+@media(max-width:520px){
+  body{padding:1rem .7rem 3rem}
+  .lf-row,.cost-cards{grid-template-columns:1fr}
+  .card-body,.lead-form,.r-sec{padding-left:1.15rem;padding-right:1.15rem}
+  .insight{padding:2rem 1.3rem}.r-hero{padding:2.6rem 1.2rem 2.2rem}.r-cta{padding:2rem 1.2rem}
+  .rail-label{font-size:9.5px}.cost{padding:1.5rem 1.2rem}
+  .sc-analogy{font-size:16px}.sc-score{font-size:23px}
+}
+@media print{body{background:#fff;padding:0}.screen:not(#sc-result){display:none!important}#sc-result{display:block!important}.btn-ghost{display:none!important}}
+@media(prefers-reduced-motion:reduce){.compass .cmp-needle{animation:none!important}.screen.active{animation:none}.sc-bar-fill{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- INTRO -->
+<div class="screen active" id="sc-intro">
+  <div class="intro">
+    <div class="intro-sig">
+      <svg class="compass" width="118" height="118" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="cmp-ring" cx="60" cy="60" r="52"/><circle class="cmp-ring2" cx="60" cy="60" r="43"/>
+        <g class="cmp-ticks"><path d="M60 10v8M60 102v8M10 60h8M102 60h8"/><path d="M27 27l4.5 4.5M93 27l-4.5 4.5M27 93l4.5-4.5M93 93l-4.5-4.5" opacity=".55"/></g>
+        <g class="cmp-needle"><path class="ndl-w" d="M60 60 60 54 26 60 60 66z"/><path class="ndl-e" d="M60 60 60 54 94 60 60 66z"/><path class="ndl-s" d="M60 60 54 60 60 96 66 60z"/><path class="ndl-n" d="M60 60 54 60 60 24 66 60z"/></g>
+        <circle class="cmp-center" cx="60" cy="60" r="3.6"/>
+      </svg>
+    </div>
+    <div class="kicker">Diagnóstico Agenda Magnética</div>
+    <h1>Descubra onde sua competência está ficando <em>invisível</em></h1>
+    <p class="intro-sub">Você pode ser uma excelente profissional da saúde e mesmo assim faturar abaixo do que merece. Não por falta de competência — mas porque ela fica invisível em algum ponto da jornada do paciente. Em 4 minutos, você descobre exatamente qual é o seu.</p>
+    <button class="btn btn-pri" onclick="start()">Iniciar meu diagnóstico <span class="ic" data-ic="arrow-right"></span></button>
+    <div class="intro-foot"><span><span class="ic" data-ic="clock"></span> 4 minutos</span><span><span class="ic" data-ic="compass"></span> Resultado na hora</span><span><span class="ic" data-ic="lock"></span> Confidencial</span></div>
+  </div>
+</div>
+
+<!-- JOURNEY -->
+<div class="screen" id="sc-journey">
+  <div class="rail" id="rail"></div>
+  <div class="prog"><div class="prog-top"><span class="prog-l" id="prog-l">Pergunta 1</span><span class="prog-p" id="prog-p">0%</span></div><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div></div>
+  <div id="step-host"></div>
+</div>
+
+<!-- LEAD -->
+<div class="screen" id="sc-lead">
+  <div class="lead-head">
+    <div class="lh-badge"><span class="ic" data-ic="circle-check"></span> Diagnóstico concluído</div>
+    <h2 class="serif">Seu resultado está pronto</h2>
+    <p>Preencha abaixo para receber sua análise personalizada — com a sua nota e o que esse gargalo está te custando.</p>
+  </div>
+  <div class="card">
+    <div class="lead-form">
+      <div class="lf-row">
+        <div class="field"><label>Nome completo *</label><input type="text" id="f-nome" placeholder="Seu nome"></div>
+        <div class="field"><label>WhatsApp *</label><input type="tel" id="f-wpp" placeholder="(00) 00000-0000"></div>
+      </div>
+      <div class="lf-row">
+        <div class="field"><label>@ do Instagram *</label><input type="text" id="f-ig" placeholder="@seuperfil"></div>
+        <div class="field"><label>Área de atuação</label><input type="text" id="f-area" placeholder="Ex: Odontologia, Derma..."></div>
+      </div>
+      <div class="field"><label>O que você faz e quem você ajuda?</label><textarea id="f-desc" placeholder="Em poucas palavras, seu trabalho e o perfil dos seus pacientes..."></textarea></div>
+      <div class="field"><label>O que você sente que está te impedindo de faturar mais?</label><textarea id="f-bloq" placeholder="Na sua percepção, qual é o principal obstáculo hoje..."></textarea></div>
+    </div>
+    <div class="lead-foot">
+      <button class="btn btn-pri full" onclick="submitLead()">Revelar meu diagnóstico <span class="ic" data-ic="arrow-right"></span></button>
+      <div class="privacy"><span class="ic" data-ic="lock"></span> Seus dados são confidenciais e não serão compartilhados</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div class="screen" id="sc-result"><div class="r-card" id="result-host"></div></div>
+
+</div>
+
+<script>
+/* ════ CONFIG ════ */
+const CFG={
+  URL_MAPA:'#',
+  MAPA_PRECO:'R$ 497',
+  MAPA_PARCELAS:'ou em até 12x',
+  WEBHOOK_URL:'https://atendimento.n8n.negociodeproposito.com.br/webhook/quiz-agenda-magnetica'
+};
+
+/* ════ ÍCONES (SVG inline) ════ */
+const ICONS={
+  'arrow-right':'<path d="M5 12h14M13 6l6 6-6 6"/>','arrow-left':'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  'arrow-up-right':'<path d="M7 17L17 7"/><path d="M8 7h9v9"/>',
+  'check':'<path d="M5 12.5l4.5 4.5L19 7.5"/>','x':'<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>','minus':'<path d="M5.5 12h13"/>',
+  'flame':'<path d="M12 3C9 7 7 9 7 13a5 5 0 0 0 10 0c0-2-1-3.6-2.5-5C13 9 14 6.5 12 3z"/>',
+  'target':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>',
+  'map-pin':'<path d="M12 21c4-4.5 6-7.5 6-10.5A6 6 0 0 0 6 10.5C6 13.5 8 16.5 12 21z"/><circle cx="12" cy="10.5" r="2.3"/>',
+  'calendar-plus':'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16M8 3v3M16 3v3M12 13v4M10 15h4"/>',
+  'user-check':'<circle cx="10" cy="8" r="3.5"/><path d="M4 20c0-3.3 2.7-5.5 6-5.5"/><path d="M15 14.5l2 2 3.5-3.5"/>',
+  'chair':'<path d="M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><path d="M5 11h14a2 2 0 0 1 2 2v3H3v-3a2 2 0 0 1 2-2z"/><path d="M5 16v3M19 16v3"/>',
+  'heart':'<path d="M12 20C7 16.5 4 13.5 4 9.5A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 8 2.5c0 4-3 7-8 10.5z"/>',
+  'brain':'<path d="M9.5 4A2.5 2.5 0 0 0 7 6.5 2.5 2.5 0 0 0 5.5 11 2.5 2.5 0 0 0 7 15.5 2.5 2.5 0 0 0 9.5 19a1.5 1.5 0 0 0 1.5-1.5V5.5A1.5 1.5 0 0 0 9.5 4z"/><path d="M14.5 4A2.5 2.5 0 0 1 17 6.5 2.5 2.5 0 0 1 18.5 11 2.5 2.5 0 0 1 17 15.5 2.5 2.5 0 0 1 14.5 19a1.5 1.5 0 0 1-1.5-1.5V5.5A1.5 1.5 0 0 1 14.5 4z"/>',
+  'money':'<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/>',
+  'id-badge':'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2.5h6V3"/><circle cx="12" cy="11" r="2.2"/><path d="M8.5 17.5c0-2 1.6-3 3.5-3s3.5 1 3.5 3"/>',
+  'photo':'<rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 16.5l4.5-4 3.5 3 4-4 4 4.5"/>',
+  'route':'<circle cx="6.5" cy="18" r="2"/><circle cx="17.5" cy="6" r="2"/><path d="M8.5 18h6a3 3 0 0 0 0-6h-5a3 3 0 0 1 0-6h2"/>',
+  'compass':'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5L11 11l-2.5 4.5L13 13z"/>',
+  'droplet':'<path d="M12 3C9 7 6.5 10 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 10 15 7 12 3z"/>',
+  'crosshair':'<circle cx="12" cy="12" r="8"/><path d="M12 2.5v3.5M12 18v3.5M2.5 12H6M18 12h3.5"/><circle cx="12" cy="12" r="2.3"/>',
+  'gauge':'<path d="M4.5 17a8 8 0 1 1 15 0"/><path d="M12 13.5l4.5-3.5"/><circle cx="12" cy="14" r="1.3" fill="currentColor" stroke="none"/>',
+  'flag':'<path d="M6 21V4"/><path d="M6 4.5h11l-2.2 4 2.2 4H6"/>',
+  'trending-down':'<path d="M3 7l6 6 4-4 8 8"/><path d="M21 17v-4.5h-4.5"/>',
+  'git-fork':'<circle cx="6.5" cy="5" r="2"/><circle cx="17.5" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6.5 7v1.5a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3V7M12 14.5V17"/>',
+  'map':'<path d="M9 4.5L4 6.5v13l5-2 6 2 5-2v-13l-5 2-6-2z"/><path d="M9 4.5v13M15 6.5v13"/>',
+  'shield-check':'<path d="M12 3l7.5 3v5.5c0 4.3-3.2 7.5-7.5 9.2-4.3-1.7-7.5-4.9-7.5-9.2V6z"/><path d="M9 11.5l2 2 4-4"/>',
+  'circle-check':'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5.5"/>',
+  'lock':'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1" fill="currentColor" stroke="none"/>',
+  'clock':'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/>',
+  'video':'<rect x="3" y="7" width="12" height="10" rx="2"/><path d="M15 10.5l5.5-3v9l-5.5-3z"/>',
+  'user-heart':'<circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c0-3.2 2.6-5.3 5.5-5.3"/><path d="M17.8 14c-1-1.1-2.8-.7-2.8.8 0 1.3 2.8 3.2 2.8 3.2s2.8-1.9 2.8-3.2c0-1.5-1.8-1.9-2.8-.8z"/>',
+  'seedling':'<path d="M12 21v-7"/><path d="M12 14c-3.5 0-5.5-2-5.5-5.5C10 8.5 12 10.5 12 14z"/><path d="M12 12c3 0 4.5-1.7 4.5-4.5C13.5 7.5 12 9.2 12 12z"/>',
+  'stack':'<path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4M4 16.5l8 4 8-4"/>',
+  'tools':'<path d="M14.5 6.5a3.5 3.5 0 0 0-4.7 4.2l-5.6 5.6a1.5 1.5 0 0 0 2.1 2.1l5.6-5.6a3.5 3.5 0 0 0 4.2-4.7l-2 2-1.8-1.8 2-2z"/>'
+};
+function svg(inner){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(inner||'')+'</svg>'}
+function I(n){return '<span class="ic">'+svg(ICONS[n])+'</span>'}
+function paintIcons(root){(root||document).querySelectorAll('span.ic[data-ic]').forEach(e=>{if(!e.firstChild)e.innerHTML=svg(ICONS[e.dataset.ic])})}
+
+/* ════ ILUSTRAÇÕES DOS INSIGHTS ════ */
+const ILLUS={
+  'balde':'<path d="M26 18h28l-3.5 26a3 3 0 0 1-3 2.6H32.5a3 3 0 0 1-3-2.6z"/><path d="M24 18h32"/><circle cx="38" cy="30" r="1.1" fill="currentColor" stroke="none"/><path d="M38 47.5c0 2 2.4 2 2.4 0 0-1.4-1.2-2.6-1.2-2.6s-1.2 1.2-1.2 2.6z"/>',
+  'vitrine':'<path d="M18 22h44v22H18z"/><path d="M18 30h44M32 30v14M48 30v14"/><path d="M16 22l3-6h42l3 6"/>',
+  'frozen':'<path d="M40 11v34M25 19.5l30 17M55 19.5l-30 17"/><path d="M40 16l-3.5 3M40 16l3.5 3M40 40l-3.5-3M40 40l3.5-3M28 23l.5 4.5M28 23l-4 1.5M52 23l-.5 4.5M52 23l4 1.5"/>',
+  'conduzir':'<circle cx="40" cy="28" r="15"/><path d="M48.5 19.5 41 30 31.5 37.5 39 27z"/><circle cx="40" cy="28" r="1.5" fill="currentColor" stroke="none"/>',
+  'circulate':'<path d="M27 28a13 13 0 1 1 5 10.4"/><path d="M27 37v-9h9"/><circle cx="40" cy="28" r="2.2" fill="currentColor" stroke="none"/>',
+  'seed':'<path d="M40 46V29"/><path d="M40 29c-5 0-8-3-8-8 5 0 8 3 8 8z"/><path d="M40 26c4 0 6.5-2.5 6.5-6.5C42 19.5 40 22 40 26z"/>',
+  'foundation':'<path d="M22 45h36M22 38.5h36M22 32h36"/><path d="M22 45V32l18-8 18 8v13"/><path d="M31 38.5V32M49 38.5V32M40 45v-6.5"/>',
+  'tools':'<path d="M44 19a6.5 6.5 0 0 0-8.5 7.6L23 39a2.6 2.6 0 0 0 3.7 3.7l12.4-12.5A6.5 6.5 0 0 0 47 21.5l-4.3 4.3-3-3 4.3-4.3z"/>'
+};
+function illusSVG(name){return '<svg viewBox="0 0 80 56" fill="none" stroke="var(--gold-l)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+(ILLUS[name]||ILLUS['conduzir'])+'</svg>'}
+
+/* ════ FAIXAS DE FATURAMENTO ════ */
+const FIN_E_CUR=[['Menos que R$ 10 mil',7500],['Entre R$ 10 mil e R$ 20 mil',15000],['Entre R$ 20 mil e R$ 30 mil',25000],['Entre R$ 30 mil e R$ 50 mil',40000],['Entre R$ 50 mil e R$ 75 mil',62500],['Entre R$ 75 mil e R$ 100 mil',87500],['Acima de R$ 100 mil',125000]];
+const FIN_E_DES=[['Entre R$ 30 mil e R$ 50 mil',40000],['Entre R$ 50 mil e R$ 75 mil',62500],['Entre R$ 75 mil e R$ 100 mil',87500],['Entre R$ 100 mil e R$ 200 mil',150000],['Entre R$ 200 mil e R$ 300 mil',250000],['Acima de R$ 300 mil',350000]];
+const FIN_B_CUR=[['Ainda não tenho faturamento estabelecido',0],['Faturamento irregular — abaixo de R$ 3 mil',1500],['Entre R$ 3 mil e R$ 8 mil',5500],['Acima de R$ 8 mil',10000]];
+const FIN_B_DES=[['Quero atingir consistência — R$ 5 mil a R$ 10 mil por mês',7500],['Minha meta é R$ 10 mil a R$ 20 mil por mês',15000],['Quero chegar a R$ 20 mil a R$ 40 mil por mês',30000],['Minha visão é faturar acima de R$ 40 mil por mês',50000]];
+
+/* ════ SHARED ════ */
+const SHARED=[
+  {type:'q',id:'hook',icon:'flame',stage:'Abertura',name:'Reconhecimento',stageNum:0,
+   q:'Complete com a opção mais verdadeira: "Eu sei que sou uma excelente profissional, mas..."',
+   opts:['...meus números não refletem o que eu entrego','...sinto que sou um segredo bem guardado da minha região','...vejo gente com menos preparo crescendo mais do que eu','...trabalho demais para o pouco que sobra no fim do mês'],sc:[]},
+  {type:'q',id:'pain',icon:'target',stage:'O que pesa',name:'Sua dor',stageNum:0,
+   q:'Se você pudesse resolver uma coisa hoje, qual seria?',
+   opts:['Ter mais pacientes chegando — encher a agenda','Parar de ser comparada pelo preço e ser escolhida pelo meu valor','Que os pacientes fechem o tratamento completo, não só o básico','Que eles voltem e me indiquem, sem eu precisar correr atrás'],sc:[]},
+  {type:'insight',icon:'droplet',illus:'balde',stageNum:0,kick:'A verdade que ninguém te conta',
+   title:'Sim, você precisa de mais pacientes. E é por isso que não podemos começar por aí.',
+   html:'Presta atenção: hoje existem furos te mantendo invisível. Se a gente abrir a torneira da divulgação agora, a água escapa pelos furos <b>antes de encher o balde</b> — você atrai gente, mas ela compara, esfria e vai embora. Sua solução chega ao mercado <b>sem força magnética</b>. Existe um nome pra isso: a <b>Síndrome da Competência Invisível™</b>. Atrair paciente é a última peça — nunca a primeira. Primeiro a gente acha e tapa os furos. Aí sim, cada paciente que entra fica, fecha e te indica.'},
+  {type:'q',id:'routing',icon:'map-pin',stage:'Seu momento',name:'Perfil',stageNum:0,routing:true,
+   q:'Qual frase descreve melhor o seu momento profissional hoje?',
+   opts:['Tenho volume de atendimentos, mas poderia faturar muito mais pelo que entrego','Tenho uma prática consolidada e quero alcançar um próximo nível','Já tenho base de pacientes, mas meu crescimento travou ou está abaixo do esperado','Estou em transição — mudei de especialidade, público ou área e preciso me reposicionar','Estou no início — me formei há pouco ou estou estruturando minha prática do zero'],sc:[]}
+];
+
+/* ════ TRILHA E ════ */
+const SPINE_E=[
+  {type:'q',id:'e_arrive',icon:'calendar-plus',stage:'Furo 1',name:'Paciente Marcado',stageNum:1,
+   q:'Como o paciente novo costuma chegar até você?',
+   opts:['Já decidido a fazer comigo — me escolheu antes de falar','Interessado, mas me comparando com outras profissionais','Perguntando preço logo de cara','Por indicação, mas ainda precisa ser convencido do zero'],sc:[2,1,0,0]},
+  {type:'q',id:'e_proof',icon:'calendar-plus',stage:'Furo 1',name:'Paciente Marcado',stageNum:1,
+   q:'Quando um paciente está em dúvida, existe um lugar onde ele se convence sozinho — antes de falar com você?',
+   opts:['Sim, tenho um acervo de casos que vende por mim','Alguns posts soltos, mas nada que convença sozinho','Não — meus melhores casos estão no meu celular ou na minha cabeça','Não registro: questões éticas ou regulatórias me travam'],sc:[2,1,0,0]},
+  {type:'insight',icon:'calendar-plus',illus:'vitrine',stageNum:1,kick:'Furo 1 · Paciente Marcado',
+   title:'A decisão começa antes do primeiro "oi"',
+   html:'O paciente até passa pela sua porta. Mas se ele não te enxerga como diferente, compara e some — e na sua ponta isso parece simplesmente que <b>"ninguém está chegando"</b>.'},
+  {type:'q',id:'e7',icon:'user-check',stage:'Furo 2',name:'Paciente Confirmado',stageNum:2,
+   q:'O que costuma acontecer entre o paciente marcar e o dia do atendimento?',
+   opts:['Chega preparado, animado e pronto para decidir','Chega, mas às vezes sem clareza do que esperar','É comum falta, remarcação ou paciente que chega frio e indeciso'],sc:[2,1,0]},
+  {type:'q',id:'e8',icon:'user-check',stage:'Furo 2',name:'Paciente Confirmado',stageNum:2,
+   q:'Você tem algum processo estruturado para preparar o paciente antes da consulta?',
+   opts:['Sim — uma sequência que prepara e aquece o paciente','Faço algo informal, mas não é um sistema','Não — o paciente chega sem nenhuma preparação minha'],sc:[2,1,0]},
+  {type:'insight',icon:'user-check',illus:'frozen',stageNum:2,kick:'Furo 2 · Paciente Confirmado',
+   title:'O "sim" não é o fim. É o começo da dúvida.',
+   html:'Parte da sua agenda vazia é gente que marcou e não apareceu. Sem condução entre o sim e a cadeira, o paciente esfria — e o buraco na agenda <b>parece falta de paciente, mas é falta de aquecimento</b>.'},
+  {type:'q',id:'e_end',icon:'chair',stage:'Furo 3',name:'Paciente na Cadeira',stageNum:3,
+   q:'Como a maioria das suas consultas termina?',
+   opts:['O paciente fecha um plano completo de tratamento','Fecha alguma coisa, mas geralmente abaixo do que eu recomendaria','Pede para pensar ou leva a proposta para casa','Termina com receita, exames ou encaminhamento — não trabalho com planos no modelo clássico'],sc:[2,1,0,1]},
+  {type:'q',id:'e_sell',icon:'chair',stage:'Furo 3',name:'Paciente na Cadeira',stageNum:3,
+   q:'O que você vende com mais frequência?',
+   opts:['Planos completos de transformação','Uma mistura — às vezes plano, às vezes procedimento avulso','Procedimentos ou sessões avulsas, sem programa estruturado','Procedimentos de alto valor unitário, sem protocolo de continuidade'],sc:[2,1,0,1]},
+  {type:'q',id:'e_feel',icon:'chair',stage:'Furo 3',name:'Paciente na Cadeira',stageNum:3,
+   q:'Na hora de apresentar o plano de tratamento, como você se sente?',
+   opts:['Muito segura — apresento com naturalidade e convicção','Segura, mas fico desconfortável se questionam o valor','Insegura — sinto que estou vendendo, e isso me incomoda','No fundo acho que o paciente não vai querer ou não vai poder pagar'],sc:[2,1,0,0]},
+  {type:'insight',icon:'chair',illus:'conduzir',stageNum:3,kick:'Furo 3 · Paciente na Cadeira',
+   title:'Conduzir não é pressionar',
+   html:'Quando o paciente fecha pouco, você precisa de muito mais gente pra faturar o mesmo. A sensação de "preciso de mais paciente" nasce aqui: <b>não falta volume, falta valor por atendimento</b>.'},
+  {type:'q',id:'e14',icon:'heart',stage:'Furo 4',name:'Paciente Fidelizado',stageNum:4,
+   q:'Você tem um sistema de acompanhamento pós-atendimento?',
+   opts:['Sim — processos ativos para manter o paciente engajado','Contatos pontuais, mas não é um sistema','Não — o retorno depende do paciente tomar a iniciativa'],sc:[2,1,0]},
+  {type:'q',id:'e15',icon:'heart',stage:'Furo 4',name:'Paciente Fidelizado',stageNum:4,
+   q:'Com que frequência seus pacientes te indicam espontaneamente?',
+   opts:['Com frequência — indicação é fonte consistente e previsível','Acontece, mas não é algo que eu consiga planejar','Raramente — a maioria não indica ou indica muito pouco'],sc:[2,1,0]},
+  {type:'q',id:'e16',icon:'heart',stage:'Furo 4',name:'Paciente Fidelizado',stageNum:4,
+   q:'Você transforma seus casos de resultado em conteúdo estratégico?',
+   opts:['Sim — uso meus resultados ativamente para gerar autoridade','Às vezes, mas sem consistência','Não — tenho resultados incríveis que ficam guardados'],sc:[2,1,0]},
+  {type:'insight',icon:'heart',illus:'circulate',stageNum:4,kick:'Furo 4 · Paciente Fidelizado',
+   title:'Resultado que não circula não vira autoridade',
+   html:'Esse é o furo que mais engana. Quando ninguém volta e ninguém indica, você recomeça do zero <b>todo mês</b> — eternamente dependente de paciente novo. Não é falta de paciente. É falta de sistema.'},
+  {type:'q',id:'e_price',icon:'brain',stage:'Emocional',name:'Diagnóstico interno',stageNum:0,
+   q:'Quando você pensa em cobrar mais pelo seu trabalho, o que aparece primeiro?',
+   opts:['Tranquilidade — sei o valor que entrego e cobro sem peso','Aquela dúvida: "será que vão achar caro?"','O receio de ouvir um não e perder o paciente pra concorrente','Um aperto de cobrar mais de quem talvez não possa pagar'],sc:[]},
+  {type:'q',id:'e_compare',icon:'brain',stage:'Emocional',name:'Diagnóstico interno',stageNum:0,modifier:true,
+   q:'Quando você vê outra profissional crescendo rápido, sua reação mais honesta é:',
+   opts:['Fico curiosa pra entender o que ela faz de diferente','Penso: "sou tão boa quanto — só me falta a estratégia certa"','No fundo acho meu trabalho melhor que o dela, e me incomoda ela aparecer mais','Fico me perguntando como alguém com menos preparo chega mais longe','Sinto que não sei o que ela tem que eu não tenho'],sc:[]},
+  {type:'q',id:'e_cur',icon:'money',stage:'Financeiro',name:'Onde você está',stageNum:0,fin:'cur',
+   q:'Hoje, sua prática fatura aproximadamente por mês:',opts:FIN_E_CUR.map(x=>x[0]),sc:[]},
+  {type:'q',id:'e_des',icon:'target',stage:'Financeiro',name:'Onde você merece estar',stageNum:0,fin:'des',
+   q:'Pela sua experiência e pelos resultados que entrega, quanto você sente que deveria estar faturando?',opts:FIN_E_DES.map(x=>x[0]),sc:[]}
+];
+
+/* ════ TRILHA B ════ */
+const SPINE_B=[
+  {type:'insight',icon:'seedling',illus:'seed',stageNum:0,kick:'O momento mais raro da sua carreira',
+   title:'Você não tem um problema de crescimento. Tem uma vantagem: a gaveta ainda nem fechou.',
+   html:'Você é o diamante — e dá pra sair brilhando antes mesmo de ficar guardada. A maioria começa improvisando, cresce torta e gasta anos desconstruindo. Vamos ver quanto da sua fundação já existe.'},
+  {type:'q',id:'b_dif',icon:'id-badge',stage:'Fundação',name:'Identidade',stageNum:0,
+   q:'O que te diferencia de qualquer outra profissional da sua área hoje?',
+   opts:['Ainda não sei dizer — estou descobrindo minha identidade profissional','Mostro minha formação e especializações, mas ainda não tenho casos próprios','Ainda não tenho presença estruturada — estou no comecinho'],sc:[]},
+  {type:'insight',icon:'stack',illus:'foundation',stageNum:0,kick:'Pilar 1 · Protocolo Assinatura™',
+   title:'Sem método com nome, o mercado só enxerga preço',
+   html:'Quem começa sem um protocolo próprio é comparada por valor desde o primeiro dia. <b>Definir isso agora</b> separa quem cresce com autoridade de quem vira mais uma na multidão.'},
+  {type:'q',id:'b_proof',icon:'photo',stage:'Fundação',name:'Provas',stageNum:0,
+   q:'E sobre registrar seus resultados — fotos, casos, depoimentos?',
+   opts:['Ainda não tenho casos suficientes para registrar','Tenho alguns da formação ou estágio, mas nada da prática autônoma','Estou em transição — o que eu tinha não reflete mais o que ofereço'],sc:[]},
+  {type:'q',id:'b_method',icon:'route',stage:'Fundação',name:'Posicionamento',stageNum:0,
+   q:'Você já tem um posicionamento definido — para quem você atende e por quê?',
+   opts:['Tenho um rascunho na cabeça, mas nada estruturado','Estou começando do zero, sem direção clara ainda','Tento atender todo mundo — ainda não escolhi um foco'],sc:[]},
+  {type:'insight',icon:'tools',illus:'tools',stageNum:0,kick:'A regra que ninguém te conta',
+   title:'Crescer sem fundação é crescer e desmoronar ao mesmo tempo',
+   html:'Cada paciente atendido sem método, sem prova e sem posicionamento é <b>retrabalho marcado para o futuro</b>. Construir certo do começo não é mais lento — é o único caminho que não te obriga a recomeçar.'},
+  {type:'q',id:'b_compare',icon:'brain',stage:'Emocional',name:'Diagnóstico interno',stageNum:0,
+   q:'Quando você vê uma colega já estabelecida, sua reação mais honesta é:',
+   opts:['Inspiração — olho para quem já chegou onde quero chegar','Referência — uso o caminho delas como parâmetro para o meu','Ansiedade — será que eu vou conseguir chegar lá?','Pressão — sinto que estou atrasada em relação ao que esperava'],sc:[]},
+  {type:'q',id:'b_cur',icon:'money',stage:'Financeiro',name:'Onde você está',stageNum:0,fin:'cur',
+   q:'Hoje, sua realidade de faturamento é:',opts:FIN_B_CUR.map(x=>x[0]),sc:[]},
+  {type:'q',id:'b_des',icon:'target',stage:'Financeiro',name:'Sua meta',stageNum:0,fin:'des',
+   q:'Onde você quer chegar nos próximos meses?',opts:FIN_B_DES.map(x=>x[0]),sc:[]}
+];
+
+/* ════ DIAGNÓSTICO ÚNICO ════ */
+const DIAMOND={icon:'compass',color:'#9C6E22',bg:'#F3E7CB',
+  name:'Diamante na Gaveta™',
+  phrase:'Você é valiosa.\nMas competência, sozinha, não te torna requisitada.',
+  mean:'Você não é "mais uma". Você é um diamante.\n\nO problema nunca foi a sua competência — é que ela está guardada numa gaveta que o mercado não abre. E competência guardada não enche agenda, não constrói autoridade e não te torna a escolha óbvia.\n\nA boa notícia: a gaveta tem 4 travas. A gente mediu, uma por uma, exatamente onde a sua está presa.',
+  emo:'Você pode estar esperando que a competência fale por si.\n\nMas competência guardada não gera confiança — e confiança é o que enche agenda. O diamante não tem culpa de estar na gaveta. Mas continua invisível até alguém abrir a trava certa.'};
+
+const STAGE_INFO=[
+  {n:1,funnel:'Paciente Marcado',analogy:'A Vitrine Apagada',build:'uma vitrine que faz o paciente te escolher antes mesmo de falar com você.',
+   d:{low:'Hoje você é comparada e escolhida pelo preço. O mercado vê procedimentos — não vê você.',mid:'Você desperta interesse, mas divide a atenção com a concorrência. Falta clareza pra ser a escolha óbvia.',high:'O paciente já chega decidido. Sua vitrine está acesa — esse furo não é o seu.'}},
+  {n:2,funnel:'Paciente Confirmado',analogy:'O Sim que Congela',build:'a condução que mantém o "sim" aquecido entre o agendamento e a cadeira.',
+   d:{low:'Entre marcar e aparecer, o paciente esfria. Falta e remarcação furam a agenda que você já conquistou.',mid:'A maioria aparece, mas sem preparo. Você reconquista cada um na consulta, gastando energia que devia estar vendendo.',high:'Seu paciente chega aquecido e pronto. O intervalo trabalha a seu favor.'}},
+  {n:3,funnel:'Paciente na Cadeira',analogy:'A Consulta Sem Bússola',build:'o método que conduz a consulta do diagnóstico ao plano completo.',
+   d:{low:'O paciente sai com "vou pensar" ou fecha o mínimo. Você atende muito e fatura pouco com quem já está na cadeira.',mid:'Você fecha — mas abaixo do potencial. Falta um método que conduza do diagnóstico ao plano completo.',high:'Você conduz com segurança e fecha planos completos. Cada consulta vale o que deveria valer.'}},
+  {n:4,funnel:'Paciente Fidelizado',analogy:'O Tesouro Enterrado',build:'o sistema que faz cada paciente voltar, indicar e virar prova.',
+   d:{low:'Ninguém volta, ninguém indica. Você recomeça do zero todo mês — e é daqui que vem a sensação eterna de "falta paciente".',mid:'Acontece indicação, mas no improviso. Seus melhores casos morrem no celular em vez de trabalharem por você.',high:'Seus pacientes voltam, indicam e viram prova. Sua autoridade circula sozinha.'}}
+];
+
+const MECH='A Síndrome da Competência Invisível™ não atinge quem não sabe o que faz. Ela atinge exatamente quem tem resultado real e não consegue fazer o mercado perceber. Você não tem um problema de competência — tem um problema de percepção. E são problemas completamente diferentes, com soluções completamente diferentes.';
+
+const RAIL=[{n:1,ic:'calendar-plus',l:'Marcado'},{n:2,ic:'user-check',l:'Confirmado'},{n:3,ic:'chair',l:'Na cadeira'},{n:4,ic:'heart',l:'Fidelizado'}];
+
+/* ════ ESTADO ════ */
+let trail=null,steps=[...SHARED],idx=0,hasMod=false;
+const ANS={};
+let leadData={};
+function $(id){return document.getElementById(id)}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function start(){show('sc-journey');render()}
+function questionList(){return steps.filter(s=>s.type==='q')}
+
+function render(){
+  const step=steps[idx],qs=questionList(),totalQ=qs.length;
+  const answered=qs.filter(q=>steps.indexOf(q)<idx||ANS[q.id]!==undefined).length;
+  const pct=Math.round((Math.min(answered,totalQ)/totalQ)*100);
+  $('prog-fill').style.width=pct+'%';$('prog-p').textContent=pct+'%';
+  $('prog-l').textContent=step.type==='q'?('Pergunta '+(qs.indexOf(step)+1)+' de '+totalQ):'Um momento de clareza';
+  renderRail(step);
+  $('step-host').innerHTML=step.type==='insight'?insightHTML(step):questionHTML(step);
+}
+function renderRail(step){
+  const rail=$('rail');
+  if(trail!=='e'||!(step.stageNum>=1)){rail.style.display='none';return}
+  rail.style.display='flex';const sn=step.stageNum;
+  rail.innerHTML=RAIL.map(r=>{const cls=r.n<sn?'done':r.n===sn?'now':'';return `<div class="rail-node ${cls}"><div class="rail-dot">${I(r.ic)}</div><div class="rail-label">${r.l}</div></div>`}).join('');
+}
+function questionHTML(q){
+  const sel=ANS[q.id];
+  const opts=q.opts.map((o,i)=>`<div class="opt${sel===i?' sel':''}" onclick="pick('${q.id}',${i},this)"><div class="rd"></div><span class="ot">${o}</span></div>`).join('');
+  const isLast=idx===steps.length-1;
+  return `<div class="card"><div class="card-tag">${I(q.icon)}<span class="ct-stage">${q.stage}</span><span class="ct-name">${q.name}</span></div>
+    <div class="card-body"><div class="q-text"><span class="qn">${questionList().indexOf(q)+1}.</span>${q.q}</div>
+    <div class="opts">${opts}</div>
+    <div class="nav"><button class="btn btn-ghost" onclick="back()" style="visibility:${idx===0?'hidden':'visible'}">${I('arrow-left')} Voltar</button>
+    <button class="btn btn-next${sel!==undefined?' on':''}" id="nextbtn" onclick="next()">${isLast?'Ver meu diagnóstico':'Continuar'} ${I('arrow-right')}</button></div></div></div>`;
+}
+function insightHTML(s){
+  return `<div class="insight"><div class="ins-art">${illusSVG(s.illus)}</div>
+    <div class="ins-kick">${s.kick}</div><h3>${s.title}</h3><p>${s.html}</p>
+    <button class="btn btn-gold" onclick="next()">Continuar ${I('arrow-right')}</button></div>`;
+}
+function pick(id,i,el){ANS[id]=i;el.parentNode.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');const nb=$('nextbtn');if(nb)nb.classList.add('on')}
+function next(){
+  const step=steps[idx];
+  if(step.type==='q'&&ANS[step.id]===undefined)return;
+  if(step.id==='routing'){
+    const nt=ANS.routing<=2?'e':'b';
+    if(nt!==trail){trail=nt;const spine=nt==='e'?SPINE_E:SPINE_B;steps=[...SHARED,...spine];spine.forEach(s=>{if(s.type==='q')delete ANS[s.id]})}
+  }
+  if(step.id==='e_compare'){hasMod=ANS.e_compare===2||ANS.e_compare===3}
+  if(idx===steps.length-1){show('sc-lead');return}
+  idx++;render();
+}
+function back(){if(idx>0){idx--;render()}}
+
+/* ════ CÁLCULO ════ */
+function stageScores(){
+  const earned={1:0,2:0,3:0,4:0},poss={1:0,2:0,3:0,4:0};
+  SPINE_E.forEach(s=>{if(s.type==='q'&&s.stageNum>=1&&s.stageNum<=4&&s.sc.length&&ANS[s.id]!==undefined){earned[s.stageNum]+=s.sc[ANS[s.id]];poss[s.stageNum]+=Math.max(...s.sc)}});
+  const sc={};[1,2,3,4].forEach(k=>sc[k]=poss[k]?Math.round(earned[k]/poss[k]*100):0);return sc;
+}
+function finVal(which){
+  if(trail==='b'){const id=which==='cur'?'b_cur':'b_des';const i=ANS[id];if(i===undefined)return null;const t=which==='cur'?FIN_B_CUR:FIN_B_DES;return t[i][1]}
+  const id=which==='cur'?'e_cur':'e_des';const i=ANS[id];if(i===undefined)return null;const t=which==='cur'?FIN_E_CUR:FIN_E_DES;return t[i][1];
+}
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+function tierColor(s){if(s>=70)return{c:'#1E7A66',bg:'#E0EFE6',lb:'Magnética'};if(s>=55)return{c:'#A6701A',bg:'#F7EED7',lb:'Em construção'};if(s>=40)return{c:'#C26B2A',bg:'#F7EAD9',lb:'Em risco'};return{c:'#A3402D',bg:'#F6E5DF',lb:'Frágil'}}
+function descTier(s){return s>=70?'high':s>=40?'mid':'low'}
+
+/* ════ LEAD ════ */
+function submitLead(){
+  const nome=$('f-nome').value.trim(),wpp=$('f-wpp').value.trim(),ig=$('f-ig').value.trim();
+  if(!nome){$('f-nome').focus();alert('Por favor, informe seu nome.');return}
+  if(!wpp){$('f-wpp').focus();alert('Por favor, informe seu WhatsApp.');return}
+  if(!ig){$('f-ig').focus();alert('Por favor, informe seu @ do Instagram.');return}
+  const sc=trail==='e'?stageScores():null;
+  const total=sc?Math.round((sc[1]+sc[2]+sc[3]+sc[4])/4):null;
+  leadData={nome,wpp,instagram:ig,area:$('f-area').value.trim(),descricao:$('f-desc').value.trim(),bloqueio:$('f-bloq').value.trim(),
+    trilha:trail==='e'?'Estabelecida':'Iniciante/Transição',diagnostico:'Diamante na Gaveta',
+    notaTotal:total,notasEtapas:sc,faturamentoAtual:finVal('cur'),faturamentoDesejado:finVal('des'),
+    modificadorSCI:hasMod,respostas:ANS,timestamp:new Date().toISOString()};
+  if(CFG.WEBHOOK_URL){fetch(CFG.WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(leadData)}).catch(console.warn)}
+  console.log('[Agenda Magnética] Lead:',leadData);
+  renderResult();
+}
+
+/* ════ GRÁFICO DUAS ESTRADAS ════ */
+function twoRoads(cur,des,mode){
+  const W=320,H=170,padL=8,padR=8,padT=14,padB=24;
+  const x0=padL,x1=W-padR,y0=H-padB,y1=padT,pts=5;
+  const xs=[...Array(pts)].map((_,i)=>x0+(x1-x0)*i/(pts-1));
+  const top=Math.max(des,cur||1)*1.12,Y=v=>y0-(v/top)*(y0-y1);
+  let down,up;
+  if(mode==='b'){const base=Math.max(des*0.04,(cur||0));down=[base,des*0.10,des*0.17,des*0.21,des*0.23];up=[base,des*0.30,des*0.58,des*0.83,des];}
+  else{const c=cur||des*0.3;down=[c,c*0.95,c*0.89,c*0.84,c*0.79];up=[c,c+(des-c)*0.26,c+(des-c)*0.55,c+(des-c)*0.8,des];}
+  const path=arr=>arr.map((v,i)=>`${i?'L':'M'}${xs[i].toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+  const area=`${path(up)} L${xs[pts-1]} ${Y(down[pts-1])} ${down.slice().reverse().map((v,i)=>`L${xs[pts-1-i]} ${Y(v)}`).join(' ')} Z`;
+  const labels=['Hoje','3m','6m','9m','12m'];
+  const xlab=xs.map((x,i)=>`<text x="${x}" y="${H-7}" fill="#8E8268" font-size="9" text-anchor="middle" font-family="Inter">${labels[i]}</text>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Duas trajetórias">
+    <defs><linearGradient id="gapg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4B26A" stop-opacity=".24"/><stop offset="1" stop-color="#D4B26A" stop-opacity="0"/></linearGradient></defs>
+    <line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+    <path d="${area}" fill="url(#gapg)"/>
+    <path d="${path(down)}" fill="none" stroke="#C77B66" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 5"/>
+    <path d="${path(up)}" fill="none" stroke="#D4B26A" stroke-width="2.6" stroke-linecap="round"/>
+    <circle cx="${xs[pts-1]}" cy="${Y(down[pts-1])}" r="4" fill="#C77B66"/><circle cx="${xs[pts-1]}" cy="${Y(up[pts-1])}" r="4.5" fill="#D4B26A"/>${xlab}</svg>`;
+}
+
+/* ════ MEDIDOR ════ */
+function polar(cx,cy,r,s){const a=Math.PI*(1-s/100);return[cx+r*Math.cos(a),cy-r*Math.sin(a)]}
+function gaugeHTML(total){
+  const tc=tierColor(total),cx=120,cy=120,r=96,w=15;
+  const seg=(a,b,col)=>{const[x1,y1]=polar(cx,cy,r,a),[x2,y2]=polar(cx,cy,r,b);return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)} A${r} ${r} 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)}" stroke="${col}" stroke-width="${w}" fill="none"/>`};
+  const[nx,ny]=polar(cx,cy,r-20,total);
+  return `<svg viewBox="0 0 240 138" class="gauge-svg">
+    ${seg(0,38,'#B5462F')}${seg(40,53,'#C98A3A')}${seg(55,68,'#D7B544')}${seg(70,100,'#2E8B72')}
+    <line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="#0C3B38" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="${cx}" cy="${cy}" r="7" fill="#0C3B38"/>
+    <text x="120" y="86" text-anchor="middle" class="gauge-num" fill="${tc.c}">${total}</text>
+    <text x="120" y="106" text-anchor="middle" class="gauge-den">de 100</text></svg>`;
+}
+
+/* ════ CUSTO ════ */
+function costE(cur,des){
+  if(cur===null||des===null)return'';
+  let gap=des-cur;const positive=gap>0;const monthly=positive?gap:Math.round(cur*0.15);const daily=Math.max(1,Math.round(monthly/22));
+  return `<div class="cost">
+    <div class="cost-kick">${I('trending-down')} O custo de ficar parada</div>
+    <p class="cost-lead">Tem um detalhe que ninguém coloca na conta: enquanto a gaveta fica fechada, sua clínica <b>não para de cobrar</b>. Aluguel, equipe, equipamento, energia — tudo corre, com ou sem paciente na cadeira. Agenda vazia não é estagnação. <b>É sangria.</b></p>
+    <div class="cost-big"><div class="cb-lbl">${positive?'A cada mês, fica na mesa cerca de':'Margem em risco por mês'}</div><div class="cb-num" data-count="${monthly}">${brl(monthly)}</div><div class="cb-sub">${positive?'a diferença entre onde você está e onde deveria estar':'estimativa conservadora de erosão de posição'}</div></div>
+    <div class="cost-daily">${I('clock')} <span>Cada dia útil de agenda parada: <b>${brl(daily)}</b> que você paga mesmo sem faturar.</span></div>
+    <div class="cost-cards"><div class="cc"><div class="cc-lbl">Em 6 meses</div><div class="cc-val">${brl(monthly*6)}</div></div><div class="cc danger"><div class="cc-lbl">Em 12 meses</div><div class="cc-val">${brl(monthly*12)}</div></div></div>
+    <div class="chart-wrap">${twoRoads(cur,des,'e')}<div class="chart-legend"><div class="cl"><span class="sw" style="background:#C77B66"></span> Se nada mudar</div><div class="cl"><span class="sw" style="background:#D4B26A"></span> Com a Agenda Magnética</div></div></div>
+    <div class="cost-tag">A linha vermelha não fica parada — ela desce. Custo fixo sem faturamento não é estagnação, é perda.</div>
+    <div class="cost-punch">Ficar parada não existe. <b>Ou a curva sobe, ou ela desce.</b></div></div>`;
+}
+function costB(cur,des){
+  if(des===null)return'';
+  return `<div class="cost">
+    <div class="cost-kick">${I('git-fork')} As duas formas de chegar lá</div>
+    <p class="cost-lead">Sua meta é <b>${brl(des)} por mês</b>. Existem dois caminhos até ela — e a diferença não é talento. É <b>fundação</b>.</p>
+    <div class="chart-wrap">${twoRoads(cur||0,des,'b')}<div class="chart-legend"><div class="cl"><span class="sw" style="background:#C77B66"></span> Construindo no improviso</div><div class="cl"><span class="sw" style="background:#D4B26A"></span> Com método desde o início</div></div></div>
+    <div class="cost-tag">Quem começa sem método cresce, trava e precisa desconstruir pra recomeçar. Quem começa certo só precisa acelerar.</div>
+    <div class="cost-punch">Cada mês sem fundação é um mês que você vai <b>pagar duas vezes</b>.</div></div>`;
+}
+
+/* ════ RENDER RESULTADO ════ */
+function renderResult(){
+  const r=DIAMOND,fn=leadData.nome?leadData.nome.split(' ')[0]:'';
+  const cur=finVal('cur'),des=finVal('des');
+  let panel,cost,emoBlock;
+
+  if(trail==='e'){
+    const sc=stageScores(),total=Math.round((sc[1]+sc[2]+sc[3]+sc[4])/4);
+    const worst=[1,2,3,4].reduce((a,b)=>sc[b]<sc[a]?b:a,1);
+    const cards=STAGE_INFO.map(st=>{
+      const v=sc[st.n],tc=tierColor(v),dt=descTier(v);
+      return `<div class="score-card${st.n===worst?' worst':''}">
+        <div class="sc-head"><div class="sc-titles"><span class="sc-funnel">Etapa ${st.n} · ${st.funnel}</span><span class="sc-analogy">${st.analogy}</span></div><div class="sc-score" style="color:${tc.c}">${v}<small>/100</small></div></div>
+        <div class="sc-bar"><div class="sc-bar-fill" style="width:${v}%;background:${tc.c}"></div></div>
+        <p class="sc-desc">${st.d[dt]}</p>
+        ${st.n===worst?`<span class="sc-here">${I('flag')} Comece por aqui</span>`:''}</div>`;
+    }).join('');
+    const tc=tierColor(total);
+    panel=`<div class="r-sec alt"><div class="r-eye">${I('crosshair')} Raio-X das 4 travas</div><div class="scorecard">${cards}</div></div>
+      <div class="r-sec"><div class="r-eye">${I('gauge')} Sua Agenda Magnética hoje</div>
+      <div class="gauge-panel"><div class="gauge-cap">Pontuação geral</div>${gaugeHTML(total)}
+      <div class="gauge-tierlb" style="color:${tc.c};background:${tc.bg}">${tc.lb}</div>
+      <p class="gauge-note">Uma agenda magnética vive <b>acima de 70</b>. Você está em ${total} — ou seja, <b>${Math.max(0,70-total)>0?(70-total)+' pontos de potencial':'potencial'}</b> presos na gaveta, te custando dinheiro todo mês.</p>
+      <div class="zone-tag">A faixa <b>70–100</b> é a Zona Magnética: onde a agenda enche sozinha.</div></div></div>`;
+    cost=costE(cur,des);
+    emoBlock=`<div class="r-sec"><div class="r-eye">${I('brain')} Diagnóstico emocional</div><div class="emo"><p>${r.emo.replace(/\n\n/g,'</p><p>')}</p>${hasMod?`<span class="mech">${MECH}</span>`:''}</div></div>`;
+  } else {
+    const cards=STAGE_INFO.map(st=>`<div class="score-card">
+      <div class="sc-head"><div class="sc-titles"><span class="sc-funnel">Etapa ${st.n} · ${st.funnel}</span><span class="sc-analogy">${st.analogy}</span></div><span class="sc-na">A construir</span></div>
+      <p class="sc-desc"><b>O que você vai construir:</b> ${st.build}</p></div>`).join('');
+    panel=`<div class="r-sec alt"><div class="r-eye">${I('crosshair')} As 4 travas da sua gaveta</div><div class="scorecard">${cards}</div></div>
+      <div class="r-sec"><div class="r-eye">${I('flag')} Seu ponto de partida</div>
+      <div class="start-panel"><div class="sp-badge">${I('map-pin')} Ponto de Partida</div>
+      <h4>Sua fundação está em branco — e isso é uma vantagem.</h4>
+      <p>Você não tem furos pra tapar. Tem travas pra instalar do jeito certo. Construindo na ordem, você chega na <b>Zona Magnética</b> sem nunca precisar desconstruir e recomeçar.</p></div></div>`;
+    cost=costB(cur,des);
+    emoBlock=`<div class="r-sec"><div class="r-eye">${I('brain')} Diagnóstico emocional</div><div class="emo"><p>Você não está atrasada. Está no momento em que as decisões mais importantes ainda podem ser tomadas com estratégia — antes que o improviso vire um hábito caro de corrigir.</p></div></div>`;
+  }
+
+  let mapaAnchor;
+  if(trail==='e' && cur!==null && des!==null){
+    let gap=des-cur; const monthly=gap>0?gap:Math.round(cur*0.15); const daily=Math.max(1,Math.round(monthly/22));
+    mapaAnchor=`<p class="mapa-anchor">Você acabou de ver: cada dia de agenda parada te custa cerca de <b>${brl(daily)}</b>. O Mapa do Magnetismo custa <b>${CFG.MAPA_PRECO}</b> — menos do que um único dia do que você já perde.</p>`;
+  } else {
+    mapaAnchor=`<p class="mapa-anchor">Começar pelo caminho certo custa <b>${CFG.MAPA_PRECO}</b> — antes que o improviso vire meses de retrabalho.</p>`;
+  }
+
+  $('result-host').innerHTML=`
+    <div class="r-hero" style="background:${r.bg}">
+      <div class="r-icon" style="border-color:${r.color}33;color:${r.color}">${I(r.icon)}</div>
+      <h2 class="r-name" style="color:${r.color}">${r.name}</h2>
+      <p class="r-phrase" style="color:${r.color}DD">${r.phrase.replace(/\n/g,'<br>')}</p>
+    </div>
+    <div class="r-sec"><div class="r-eye">${I('compass')} O que este resultado significa</div>${r.mean.split('\n\n').map((t,i)=>`<p>${i===0&&fn?fn+', '+t.charAt(0).toLowerCase()+t.slice(1):t}</p>`).join('')}
+      <div class="drum">${I('shield-check')}<p>Repare: <b>nenhuma</b> dessas travas é sobre a sua capacidade técnica. O problema nunca foi você. É onde a sua competência está parando de ser percebida.</p></div></div>
+    ${panel}
+    ${emoBlock}
+    <div class="r-sec alt">${cost}</div>
+    <div class="r-sec"><div class="r-cta">
+      <div class="mapa-kick">${I('map')} Do diagnóstico ao plano</div>
+      <h3 class="serif">Você recebeu o diagnóstico.<br>Agora vem o Mapa do Magnetismo.</h3>
+      <p class="mapa-promise">Aqui sou eu, <b>Liége Rodrigues</b>, que analiso pessoalmente o seu negócio, o seu posicionamento e as suas 4 vitrines. Numa reunião por Zoom, só eu e você, eu te entrego um <b>mapa personalizado</b> — com o dossiê exato do que ajustar pra ativar as vitrines da sua agenda magnética e parar de disputar paciente, sair da invisibilidade e virar a <b>escolha óbvia da sua região</b>.</p>
+      <div class="mapa-meta"><span>${I('video')} Reunião por Zoom</span><span>${I('clock')} 50 a 60 minutos</span><span>${I('user-heart')} Eu e você, 1:1</span></div>
+      ${mapaAnchor}
+      <a class="btn btn-pri mapa-btn" href="${CFG.URL_MAPA||'#'}" target="_blank" rel="noopener">Quero meu Mapa do Magnetismo ${I('arrow-right')}</a>
+      <div class="mapa-price"><b>${CFG.MAPA_PRECO}</b> ${CFG.MAPA_PARCELAS} · <span class="mapa-vagas">vagas limitadas</span></div>
+    </div></div>`;
+  show('sc-result');countUp();
+}
+function countUp(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const el=document.querySelector('.cb-num[data-count]');if(!el)return;
+  const target=+el.getAttribute('data-count');const t0=performance.now(),dur=900;
+  function tick(t){const k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3);el.textContent=Math.round(target*e).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});if(k<1)requestAnimationFrame(tick)}
+  requestAnimationFrame(tick);
+}
+
+paintIcons(document);
+</script>
+</body>
+</html>
