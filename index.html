@@ -562,10 +562,11 @@ function submitLead(){
   if(!ig){$('f-ig').focus();alert('Por favor, informe seu @ do Instagram.');return}
   const sc=trail==='e'?stageScores():null;
   const total=sc?Math.round((sc[1]+sc[2]+sc[3]+sc[4])/4):null;
+  const respostasTexto=steps.filter(s=>s.type==='q'&&!s.fin&&ANS[s.id]!==undefined).map(s=>({bloco:s.name,etapa:s.stage,pergunta:s.q,resposta:s.opts[ANS[s.id]]}));
   leadData={nome,wpp,instagram:ig,area:$('f-area').value.trim(),descricao:$('f-desc').value.trim(),bloqueio:$('f-bloq').value.trim(),
     trilha:trail==='e'?'Estabelecida':'Iniciante/Transição',diagnostico:'Diamante na Gaveta',
     notaTotal:total,notasEtapas:sc,faturamentoAtual:finVal('cur'),faturamentoDesejado:finVal('des'),
-    modificadorSCI:hasMod,respostas:ANS,timestamp:new Date().toISOString()};
+    modificadorSCI:hasMod,respostas:ANS,respostas_texto:respostasTexto,timestamp:new Date().toISOString()};
   if(CFG.WEBHOOK_URL){fetch(CFG.WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(leadData)}).catch(console.warn)}
   console.log('[Agenda Magnética] Lead:',leadData);
   renderResult();
