@@ -323,6 +323,278 @@ body{
 @media(max-width:900px){.v4-report-shell,.v4-result-card{border-radius:22px}.v4-insight-card,.v4-result-hero,.v4-cost-card,.v4-cta-card,.v4-meaning-grid{grid-template-columns:1fr}.v4-insight-copy,.v4-result-copy,.v4-cta-copy{padding:28px 22px}.v4-hero-art{min-height:310px;order:-1}.v4-hero-art:before{background:linear-gradient(180deg,transparent 0,rgba(255,249,239,.12) 55%,#FFF9EF 100%)}.v4-result-img{min-height:250px}.v4-result-img:after{background:linear-gradient(180deg,transparent 45%,rgba(255,249,239,.9))}.v4-score-grid,.v4-steps,.v4-gauge-wrap,.v4-metric-strip,.v4-chips{grid-template-columns:1fr}.v4-gauge-wrap{padding:22px 16px}.v4-gauge-score .n{font-size:72px}.v4-cost-card{gap:10px}.v4-bars{grid-template-columns:1fr;min-height:auto;padding:20px}.v4-bars:before{display:none}.v4-pedestal.small,.v4-pedestal.big{width:100%;height:78px}.v4-x strong{font-size:42px}.v4-map-art{min-height:300px;order:-1}.v4-map-art:before{background:linear-gradient(180deg,transparent 0,rgba(255,249,239,.2) 60%,#FFF9EF 100%)}.v4-insight-title,.v4-result-title,.v4-cost-headline,.v4-cta-title{font-size:34px}.v4-score-grid{gap:12px}}
 
 .v4-chip{display:flex;align-items:center;justify-content:center;gap:7px}.v4-chip .ic{color:var(--v4-gold);font-size:15px}.v4-metric{display:flex;gap:11px;align-items:flex-start}.v4-metric-ic{color:var(--v4-gold);font-size:19px;margin-top:1px;flex:0 0 auto}.v4-metric-ic .ic{width:19px;height:19px}.v4-stage .ic{color:var(--v4-gold);font-size:14px;margin-right:4px;vertical-align:-.12em}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AJUSTES FINAIS — CAPA + COMPARATIVO DE VALOR
+   Somente camada visual. Lógica preservada.
+═══════════════════════════════════════════════════════════════════════ */
+
+/* CAPA — centralização, respiro e hierarquia */
+#sc-intro .intro{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  text-align:center!important;
+  min-height:calc(100vh - 28px)!important;
+  padding:56px 72px!important;
+  gap:0!important;
+}
+
+#sc-intro .intro::after{
+  right:50%!important;
+  top:50%!important;
+  transform:translate(50%,-50%)!important;
+  width:420px!important;
+  height:420px!important;
+  opacity:.55!important;
+}
+
+#sc-intro .intro-brand{
+  width:min(100%,620px)!important;
+  min-height:92px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:18px!important;
+  margin:0 auto 28px!important;
+  padding:14px 28px!important;
+  border-radius:28px!important;
+  border:1px solid rgba(201,161,93,.34)!important;
+  background:rgba(255,255,255,.045)!important;
+  box-shadow:0 18px 44px rgba(0,0,0,.16)!important;
+  backdrop-filter:blur(3px)!important;
+}
+
+#sc-intro .intro-brand::after{display:none!important;}
+
+#sc-intro .intro-brand .gem-emblem{
+  width:58px!important;
+  height:58px!important;
+  flex:0 0 auto!important;
+  margin:0!important;
+}
+
+#sc-intro .intro-brand .kicker{
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  color:var(--gold-l)!important;
+  font-size:13px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  letter-spacing:.18em!important;
+  text-align:center!important;
+}
+
+#sc-intro .intro-brand .kicker::before,
+#sc-intro .intro-brand .kicker::after{display:none!important;}
+
+#sc-intro .intro h1{
+  max-width:980px!important;
+  margin:0 auto 22px!important;
+  font-size:70px!important;
+  line-height:.98!important;
+  letter-spacing:-.045em!important;
+  text-align:center!important;
+}
+
+#sc-intro .intro-sub{
+  max-width:650px!important;
+  margin:0 auto 28px!important;
+  font-size:18px!important;
+  line-height:1.55!important;
+  text-align:center!important;
+}
+
+#sc-intro .intro-cta,
+#sc-intro .intro .btn-pri{
+  margin:0 auto!important;
+  padding:17px 34px!important;
+  min-width:310px!important;
+  justify-content:center!important;
+  text-align:center!important;
+  font-size:14px!important;
+  letter-spacing:.06em!important;
+  text-transform:uppercase!important;
+}
+
+#sc-intro .intro-foot{
+  width:100%!important;
+  margin:22px auto 0!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:20px!important;
+  text-align:center!important;
+}
+
+#sc-intro .intro-foot span{
+  justify-content:center!important;
+  align-items:center!important;
+}
+
+/* COMPARATIVO DE VALOR — desktop preservado; mobile refinado */
+@media(max-width:900px){
+  #sc-intro .intro{
+    padding:34px 22px!important;
+    min-height:calc(100vh - 20px)!important;
+  }
+
+  #sc-intro .intro-brand{
+    width:100%!important;
+    min-height:78px!important;
+    gap:12px!important;
+    padding:12px 16px!important;
+    margin-bottom:22px!important;
+    border-radius:22px!important;
+  }
+
+  #sc-intro .intro-brand .gem-emblem{
+    width:46px!important;
+    height:46px!important;
+  }
+
+  #sc-intro .intro-brand .kicker{
+    font-size:10.5px!important;
+    letter-spacing:.12em!important;
+  }
+
+  #sc-intro .intro h1{
+    font-size:42px!important;
+    line-height:1.02!important;
+    margin-bottom:18px!important;
+  }
+
+  #sc-intro .intro-sub{
+    font-size:15.5px!important;
+    line-height:1.48!important;
+    margin-bottom:24px!important;
+  }
+
+  #sc-intro .intro-cta,
+  #sc-intro .intro .btn-pri{
+    width:100%!important;
+    min-width:0!important;
+    padding:15px 18px!important;
+    font-size:13px!important;
+  }
+
+  #sc-intro .intro-foot{
+    margin-top:18px!important;
+    gap:10px!important;
+    flex-wrap:wrap!important;
+  }
+
+  .v4-bars{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    grid-template-areas:
+      "bar1 bar2"
+      "mult mult"!important;
+    gap:22px 14px!important;
+    min-height:auto!important;
+    padding:28px 0 12px!important;
+    align-items:end!important;
+  }
+
+  .v4-bars::before{display:none!important;}
+
+  .v4-bars .v4-bar{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    text-align:center!important;
+    min-width:0!important;
+  }
+
+  .v4-bars .v4-bar:nth-child(1){grid-area:bar1!important;}
+  .v4-bars .v4-bar:nth-child(2){grid-area:bar2!important;}
+
+  .v4-bars .v4-bar .v4-pedestal{order:1!important;}
+  .v4-bars .v4-bar .label{order:2!important;}
+  .v4-bars .v4-bar .value{order:3!important;}
+
+  .v4-bars .v4-pedestal.small,
+  .v4-bars .v4-pedestal.big{
+    width:42px!important;
+    max-width:42px!important;
+    border-radius:999px 999px 10px 10px!important;
+    margin:0 auto 18px!important;
+  }
+
+  .v4-bars .v4-pedestal.small{height:86px!important;}
+  .v4-bars .v4-pedestal.big{height:158px!important;}
+
+  .v4-bars .v4-bar .label{
+    max-width:135px!important;
+    margin:0 auto 8px!important;
+    font-size:10.5px!important;
+    line-height:1.28!important;
+    letter-spacing:.11em!important;
+  }
+
+  .v4-bars .v4-bar .value{
+    margin:0!important;
+    font-size:31px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+
+  .v4-bars .v4-x{
+    grid-area:mult!important;
+    margin:4px auto 0!important;
+    text-align:center!important;
+  }
+
+  .v4-bars .v4-x strong{
+    display:block!important;
+    font-size:50px!important;
+    line-height:.9!important;
+    margin-bottom:6px!important;
+  }
+}
+
+@media(max-width:420px){
+  #sc-intro .intro{padding:28px 18px!important;}
+  #sc-intro .intro h1{font-size:36px!important;}
+  #sc-intro .intro-brand{flex-direction:column!important;gap:8px!important;}
+  #sc-intro .intro-brand .kicker{max-width:260px!important;}
+  #sc-intro .intro-foot{gap:8px!important;}
+
+  .v4-bars{
+    gap:20px 8px!important;
+    padding-top:24px!important;
+  }
+
+  .v4-bars .v4-pedestal.small,
+  .v4-bars .v4-pedestal.big{
+    width:36px!important;
+    max-width:36px!important;
+  }
+
+  .v4-bars .v4-pedestal.small{height:76px!important;}
+  .v4-bars .v4-pedestal.big{height:140px!important;}
+
+  .v4-bars .v4-bar .label{
+    font-size:9.5px!important;
+    max-width:118px!important;
+  }
+
+  .v4-bars .v4-bar .value{font-size:27px!important;}
+
+  .v4-bars .v4-x{
+    font-size:18px!important;
+    line-height:1.35!important;
+  }
+
+  .v4-bars .v4-x strong{font-size:44px!important;}
+}
+
 </style>
 </head>
 <body>
@@ -331,7 +603,7 @@ body{
 <!-- INTRO -->
 <div class="screen active" id="sc-intro">
   <div class="intro">
-    <div class="intro-sig">
+    <div class="intro-sig intro-brand">
       <svg class="gem-emblem" width="112" height="112" viewBox="0 0 120 120" aria-hidden="true">
         <defs><linearGradient id="gemG" x1="20" y1="18" x2="100" y2="104" gradientUnits="userSpaceOnUse">
           <stop stop-color="#EAD09A"/><stop offset=".5" stop-color="#C9A15D"/><stop offset="1" stop-color="#9A6E2E"/></linearGradient></defs>
@@ -340,12 +612,12 @@ body{
         <path d="M26 56 H94 M42 40 L52 56 L60 99 M78 40 L68 56 L60 99 M52 56 L60 40 M68 56 L60 40" stroke="url(#gemG)" stroke-width="1.3" stroke-linejoin="round" opacity=".82" fill="none"/>
         <path d="M88 28 l1.7 4.3 4.3 1.7 -4.3 1.7 -1.7 4.3 -1.7 -4.3 -4.3 -1.7 4.3 -1.7 z" fill="#E0C188" class="gem-spark"/>
       </svg>
+      <div class="kicker">RAIO-X DA AGENDA MAGNÉTICA™</div>
     </div>
-    <div class="kicker">Raio-X da Agenda Magnética™</div>
     <h1>Descubra o que te mantém <em>invisível</em> — e te impede de colocar de 4 a 10 novos pacientes na cadeira toda semana</h1>
     <p class="intro-sub">Um diagnóstico estratégico de 4 minutos sobre a sua agenda.</p>
-    <button class="btn btn-pri" onclick="start()">Iniciar meu Raio-X <span class="ic" data-ic="arrow-right"></span></button>
-    <div class="intro-foot"><span><span class="ic" data-ic="clock"></span> 4 min</span><span><span class="ic" data-ic="file-chart"></span> Relatório em PDF</span><span><span class="ic" data-ic="lock"></span> Privado</span></div>
+    <button class="btn btn-pri intro-cta" onclick="start()">INICIAR MEU DIAGNÓSTICO <span class="ic" data-ic="arrow-right"></span></button>
+    <div class="intro-foot"><span style="border:0;background:none;padding:0!important"><span class="ic" style="border:0;background:none;padding:0!important"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/></svg></span> 4 min</span><span style="border:0;background:none;padding:0!important"><span class="ic" style="border:0;background:none;padding:0!important"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 17v-2.5M12 17v-5M15 17v-3.5"/></svg></span> Relatório em PDF</span><span style="border:0;background:none;padding:0!important"><span class="ic" style="border:0;background:none;padding:0!important"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Privado</span></div>
   </div>
 </div>
 
