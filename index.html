@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagnóstico Agenda Magnética™ | Descubra onde sua competência está ficando invisível</title>
-<meta name="description" content="Você é valiosa — mas competência guardada não enche agenda. Descubra onde a sua está presa na gaveta, e o que isso te custa.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<title>Raio-X da Agenda Magnética™ | Descubra o que te mantém invisível</title>
+<meta name="description" content="Um diagnóstico estratégico de 4 minutos. Descubra o que te impede de colocar de 4 a 10 novos pacientes na sua cadeira toda semana.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='84'>💎</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,14 +13,15 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --t:#15605A;--t-d:#0F4E49;--a:#B8893C;--gold-l:#D4B26A;--dk:#0C3B38;
-  --bg:#EFE7D4;--paper:#FAF5E9;--ink:#1B2A28;--m:#7E8A85;--br:#DCD2BC;
+  --t:#4B1E2F;--t-d:#3A1322;--a:#C9A15D;--gold-l:#E0C188;--dk:#34101F;
+  --bg:#F5F0E8;--paper:#FCF9F3;--ink:#2A1620;--m:#8C7B82;--br:#E7DCCB;
   --rad:12px;--radl:16px;
-  --red:#A3402D;--red-bg:#F6E5DF;--amb:#A6701A;--amb-bg:#F7EED7;--grn:#1E7A66;--grn-bg:#E0EFE6;
-  --shadow:0 2px 16px rgba(12,59,56,.07);--shadow-lg:0 14px 44px rgba(12,59,56,.14);
+  --sapphire:#2F5FA8;--emerald:#1F7A53;
+  --red:#9B2C3A;--red-bg:#F6E2E2;--amb:#A6701A;--amb-bg:#F7EED7;--grn:#1F7A53;--grn-bg:#E3EFE7;
+  --shadow:0 2px 16px rgba(75,30,47,.08);--shadow-lg:0 18px 50px rgba(52,16,31,.16);
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;padding:1.5rem 1rem 4rem;line-height:1.5;
-  background-image:radial-gradient(circle at 15% 0%,rgba(184,137,60,.08),transparent 45%),radial-gradient(circle at 85% 100%,rgba(21,96,90,.07),transparent 42%)}
+  background-image:radial-gradient(circle at 15% 0%,rgba(201,161,93,.10),transparent 45%),radial-gradient(circle at 85% 100%,rgba(75,30,47,.06),transparent 42%)}
 .serif{font-family:'Fraunces',serif;font-weight:400;font-optical-sizing:auto}
 .wrap{max-width:640px;margin:0 auto}
 .screen{display:none}
@@ -46,8 +47,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;border-radius:var(--rad);font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s;text-decoration:none}
-.btn-pri{background:var(--t);color:#fff;padding:15px 30px;box-shadow:0 4px 14px rgba(21,96,90,.26)}
-.btn-pri:hover{background:var(--t-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(21,96,90,.32)}
+.btn-pri{background:var(--t);color:#fff;padding:15px 30px;box-shadow:0 4px 14px rgba(75,30,47,.26)}
+.btn-pri:hover{background:var(--t-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(75,30,47,.30)}
 .btn-pri:active{transform:scale(.98)}.btn-pri.full{width:100%}
 .btn-gold{background:var(--a);color:var(--dk);padding:14px 28px;font-weight:600}
 .btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
@@ -68,6 +69,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .intro-sub{font-size:16px;line-height:1.6;color:#4C5A57;max-width:480px;margin:0 auto 2.2rem}
 .intro-foot{margin-top:1.6rem;font-size:13px;color:var(--m);display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
 .intro-foot span{display:inline-flex;align-items:center;gap:6px}.intro-foot .ic{color:var(--a)}
+.intro-foot .ic svg{stroke-width:1.45}
+.gem-emblem{display:block;margin:0 auto;filter:drop-shadow(0 10px 22px rgba(52,16,31,.18))}
+.gem-spark{transform-origin:90px 34px;animation:spark 3.4s ease-in-out infinite}
+@keyframes spark{0%,100%{opacity:.5;transform:scale(.82)}50%{opacity:1;transform:scale(1.12)}}
 
 /* RAIL */
 .rail{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;padding:0 4px;position:relative}
@@ -92,15 +97,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .card{background:var(--paper);border:1px solid var(--br);border-radius:var(--radl);box-shadow:var(--shadow);overflow:hidden}
 .card-tag{display:flex;align-items:center;gap:9px;padding:1rem 1.4rem;border-bottom:1px solid var(--br);background:linear-gradient(180deg,#FDFAF1,var(--paper))}
 .card-tag .ic{font-size:17px;color:var(--t)}
-.card-tag .ct-stage{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t);background:rgba(21,96,90,.1);padding:3px 9px;border-radius:20px}
+.card-tag .ct-stage{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t);background:rgba(75,30,47,.10);padding:3px 9px;border-radius:20px}
 .card-tag .ct-name{font-size:13px;font-weight:500;color:#5A6864}
 .card-body{padding:1.6rem 1.4rem}
 .q-text{font-size:19px;font-weight:500;line-height:1.35;letter-spacing:-.01em;margin-bottom:1.3rem}
 .q-text .qn{color:var(--a);font-family:'Fraunces',serif;margin-right:4px}
+.q-sub{font-size:13.5px;line-height:1.5;color:var(--m);margin:-.7rem 0 1.1rem}
 .opts{display:flex;flex-direction:column;gap:9px}
 .opt{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border:1.5px solid var(--br);border-radius:var(--rad);cursor:pointer;transition:all .16s;background:#fff}
-.opt:hover{border-color:rgba(21,96,90,.5);background:#F8FBF7}
-.opt.sel{border-color:var(--t);background:#EEF6F3;box-shadow:0 0 0 3px rgba(21,96,90,.1)}
+.opt:hover{border-color:rgba(75,30,47,.45);background:#FBF6EF}
+.opt.sel{border-color:var(--t);background:#F6ECEF;box-shadow:0 0 0 3px rgba(75,30,47,.12)}
 .opt .rd{width:19px;height:19px;min-width:19px;border-radius:50%;border:2px solid var(--br);margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .16s}
 .opt.sel .rd{border-color:var(--t);background:var(--t)}.opt.sel .rd::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
 .opt .ot{font-size:14.5px;line-height:1.5;color:#2E3A37}
@@ -127,7 +133,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}
 .field label{font-size:11px;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.05em}
 .field input,.field textarea{background:#fff;border:1.5px solid var(--br);border-radius:var(--rad);padding:11px 14px;font-size:14.5px;color:var(--ink);outline:none;transition:border .16s,box-shadow .16s;font-family:inherit;resize:vertical}
-.field input:focus,.field textarea:focus{border-color:var(--t);box-shadow:0 0 0 3px rgba(21,96,90,.1)}
+.field input:focus,.field textarea:focus{border-color:var(--t);box-shadow:0 0 0 3px rgba(75,30,47,.12)}
 .field textarea{min-height:68px}
 .lead-foot{padding:0 1.4rem 1.6rem}
 .privacy{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--m);margin-top:.9rem}
@@ -177,7 +183,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .zone-tag{font-size:11px;color:var(--m);margin-top:.5rem}.zone-tag b{color:var(--grn)}
 
 /* START PANEL (B) */
-.start-panel{background:linear-gradient(165deg,#0C3B38,#114E47);border-radius:var(--radl);padding:2rem 1.5rem;text-align:center;color:#F4EAD4}
+.start-panel{background:linear-gradient(165deg,#34101F,#4B1E2F);border-radius:var(--radl);padding:2rem 1.5rem;text-align:center;color:#F4EAD4}
 .start-panel .sp-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dk);background:var(--a);padding:6px 16px;border-radius:20px;margin-bottom:1rem}
 .start-panel h4{font-family:'Fraunces',serif;font-weight:400;font-size:24px;color:#F6F0E0;margin-bottom:.7rem}
 .start-panel p{font-size:14px;line-height:1.65;color:#C7BCA2;max-width:420px;margin:0 auto}.start-panel p b{color:var(--gold-l)}
@@ -188,7 +194,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .emo .mech{display:block;margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.12);color:var(--gold-l);font-weight:500}
 
 /* COST */
-.cost{background:linear-gradient(165deg,#0A332F,#10413B);border-radius:var(--radl);padding:1.8rem 1.5rem;color:#F4EAD4;box-shadow:inset 0 0 0 1px rgba(184,137,60,.14)}
+.cost{background:linear-gradient(165deg,#2C0E1A,#3A1322);border-radius:var(--radl);padding:1.8rem 1.5rem;color:#F4EAD4;box-shadow:inset 0 0 0 1px rgba(184,137,60,.14)}
 .cost-kick{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-l);margin-bottom:1.1rem}
 .cost-kick .ic{font-size:15px}
 .cost .cost-lead{font-size:14.5px;line-height:1.65;color:#CFC3A8;margin-bottom:1.3rem}.cost-lead b{color:#F6F0E0}
@@ -222,6 +228,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .mapa-btn{position:relative;font-size:16px;padding:16px 32px}
 .mapa-price{margin-top:1rem;font-size:13.5px;color:#C7BCA2;position:relative}.mapa-price b{color:#F6F0E0;font-size:16px}
 .mapa-vagas{color:var(--gold-l);font-weight:500}
+.mapa-steps{display:flex;flex-direction:column;gap:9px;text-align:left;max-width:438px;margin:0 auto 1.4rem;position:relative}
+.mapa-steps .ms{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(201,161,93,.2);border-radius:var(--rad);padding:11px 14px;font-size:13.5px;line-height:1.5;color:#CFC3A8}
+.mapa-steps .ms b{color:#F0E6CE}
+.mapa-steps .ms-n{font-family:'Fraunces',serif;font-size:17px;color:var(--gold-l);min-width:18px;line-height:1.3}
 
 @media(max-width:520px){
   body{padding:1rem .7rem 3rem}
@@ -233,6 +243,86 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 }
 @media print{body{background:#fff;padding:0}.screen:not(#sc-result){display:none!important}#sc-result{display:block!important}.btn-ghost{display:none!important}}
 @media(prefers-reduced-motion:reduce){.compass .cmp-needle{animation:none!important}.screen.active{animation:none}.sc-bar-fill{transition:none}}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   V3 — Direção Criativa Premium | Raio-X da Agenda Magnética™
+   Somente camada visual. Copy e lógica preservadas.
+═══════════════════════════════════════════════════════════════════════ */
+:root{
+  --t:#4B1E2F!important;--t-d:#260B16!important;--a:#C9A15D!important;--gold-l:#E8CF9A!important;
+  --bg:#F5F0E8!important;--paper:#FFFBF4!important;--ink:#28131C!important;--m:#7A6A6F!important;--br:#E6D4BB!important;
+  --sapphire:#2F5FA8!important;--emerald:#1F7A53!important;--radius-xl:28px;--radius-lg:20px;
+  --shadow-lux:0 28px 90px rgba(38,11,22,.20);--shadow-paper:0 18px 45px rgba(75,30,47,.10);
+}
+html{background:var(--t-d)}
+body{
+  padding:14px!important;
+  font-family:'Inter',sans-serif!important;
+  color:var(--ink)!important;
+  background:
+    radial-gradient(circle at 10% -10%,rgba(232,207,154,.22),transparent 34%),
+    radial-gradient(circle at 92% 12%,rgba(201,161,93,.12),transparent 28%),
+    linear-gradient(180deg,#210813 0 310px,var(--bg) 310px 100%)!important;
+}
+.wrap{max-width:1180px!important;margin:0 auto!important}
+.screen.active{animation:luxRise .45s cubic-bezier(.2,.7,.2,1)!important}
+@keyframes luxRise{from{opacity:0;transform:translateY(10px) scale(.995)}to{opacity:1;transform:none}}
+
+/* capa */
+.intro{
+  min-height:calc(100vh - 28px)!important;
+  display:grid!important;grid-template-columns:minmax(0,1.02fr) minmax(280px,.82fr)!important;gap:38px!important;align-items:center!important;
+  text-align:left!important;padding:42px!important;border-radius:32px!important;overflow:hidden!important;position:relative!important;color:#F8EDDA!important;
+  border:1px solid rgba(201,161,93,.30)!important;
+  background:
+    linear-gradient(135deg,rgba(75,30,47,.96),rgba(30,6,15,.99) 78%),
+    radial-gradient(circle at 76% 42%,rgba(201,161,93,.18),transparent 30%)!important;
+  box-shadow:var(--shadow-lux)!important;
+}
+.intro:before{content:'';position:absolute;inset:18px;border:1px solid rgba(232,207,154,.14);border-radius:24px;pointer-events:none}.intro:after{content:'';position:absolute;right:5%;top:15%;width:360px;height:360px;border:1px solid rgba(201,161,93,.22);border-radius:50%;background:radial-gradient(circle,rgba(201,161,93,.09),transparent 68%);filter:blur(.2px)}
+.intro-sig{z-index:1;margin:0 0 18px!important;padding:10px;border:1px solid rgba(201,161,93,.28);border-radius:999px;background:rgba(255,255,255,.035);display:inline-flex!important}.gem-emblem{width:86px!important;height:86px!important;filter:drop-shadow(0 16px 32px rgba(0,0,0,.28))!important}
+.kicker{z-index:1;color:var(--gold-l)!important;margin-bottom:20px!important;font-size:12px!important;letter-spacing:.19em!important}.kicker:before,.kicker:after{background:rgba(201,161,93,.55)!important;width:42px!important}
+.intro h1{z-index:1;font-family:'Fraunces',serif!important;font-size:clamp(42px,5.8vw,78px)!important;line-height:.99!important;letter-spacing:-.045em!important;color:#FFF7E8!important;max-width:760px!important;margin-bottom:22px!important}.intro h1 em{color:var(--gold-l)!important}.intro h1 em:after{background:rgba(201,161,93,.18)!important;height:.32em!important}
+.intro-sub{z-index:1;margin:0 0 28px!important;max-width:650px!important;color:#E8D7BC!important;font-size:18px!important;line-height:1.65!important}.intro .btn-pri{z-index:1;background:linear-gradient(135deg,#B67D2F,var(--a),#E4C17B)!important;color:#260B16!important;font-weight:800!important;border-radius:14px!important;padding:15px 28px!important;box-shadow:0 14px 38px rgba(201,161,93,.22)!important}.intro-foot{z-index:1;justify-content:flex-start!important;margin-top:18px!important;gap:10px!important;color:#EBD9B8!important}.intro-foot span{border:1px solid rgba(201,161,93,.25);background:rgba(255,255,255,.04);border-radius:999px;padding:7px 12px!important}.intro-foot .ic{color:var(--gold-l)!important}
+
+/* jornada */
+#sc-journey{background:linear-gradient(180deg,#250914,#15040A)!important;border:1px solid rgba(201,161,93,.22);border-radius:30px!important;padding:24px 24px 28px!important;min-height:calc(100vh - 28px);box-shadow:var(--shadow-lux)}
+.rail{max-width:900px;margin:4px auto 24px!important;padding:0!important}.rail:before{top:18px!important;left:9%!important;right:9%!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(201,161,93,.48),transparent)!important}.rail-dot{width:38px!important;height:38px!important;background:#210813!important;border:1px solid rgba(201,161,93,.32)!important;color:rgba(255,255,255,.42)!important;font-family:'Fraunces',serif!important}.rail-node.done .rail-dot,.rail-node.now .rail-dot{background:radial-gradient(circle at 30% 25%,#F3D99E,var(--a) 60%,#8F5E22)!important;border-color:transparent!important;color:#2B0713!important;box-shadow:0 0 0 6px rgba(201,161,93,.10),0 0 36px rgba(201,161,93,.22)!important}.rail-label{font-size:10.5px!important;text-transform:uppercase!important;letter-spacing:.08em!important;color:rgba(255,255,255,.46)!important}.rail-node.now .rail-label{color:#fff!important;font-weight:800!important}.prog{max-width:760px;margin:0 auto 20px!important}.prog-l,.prog-p{color:#DCC7A1!important;font-size:12px!important;font-weight:700!important}.prog-p{color:var(--gold-l)!important}.prog-bar{height:4px!important;background:rgba(201,161,93,.16)!important}.prog-fill{background:linear-gradient(90deg,var(--t),var(--a),var(--gold-l))!important}
+
+/* card pergunta */
+.card{max-width:760px!important;margin:0 auto!important;background:linear-gradient(180deg,#FFFDF8,#FFF8EE)!important;border:1px solid rgba(201,161,93,.34)!important;border-radius:26px!important;box-shadow:var(--shadow-paper)!important;position:relative!important;overflow:hidden!important}.card:before{content:'';position:absolute;right:-50px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,93,.12),transparent 70%)}.card-tag{position:relative;padding:18px 24px!important;background:transparent!important;border-bottom:1px solid rgba(201,161,93,.22)!important}.card-tag .ic{width:42px!important;height:42px!important;padding:11px;border-radius:50%;background:var(--t)!important;color:var(--gold-l)!important}.ct-stage{background:transparent!important;color:#A46F25!important;font-size:11px!important;letter-spacing:.14em!important}.ct-name{font-weight:800!important;color:var(--t)!important;text-transform:uppercase!important;letter-spacing:.07em!important;font-size:12px!important}.card-body{position:relative;padding:30px 30px 26px!important}.q-text{font-family:'Fraunces',serif!important;color:var(--t)!important;font-size:29px!important;line-height:1.18!important;letter-spacing:-.025em!important;margin-bottom:22px!important}.q-text .qn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--t);color:#fff!important;font-family:'Fraunces',serif!important;margin-right:12px;font-size:20px;vertical-align:middle}.q-sub{color:#6E5962!important;font-size:14px!important}.opts{gap:11px!important}.opt{background:rgba(255,255,255,.72)!important;border:1px solid rgba(201,161,93,.38)!important;border-radius:15px!important;padding:15px 16px!important;backdrop-filter:blur(2px)}.opt:hover{transform:translateY(-1px);border-color:var(--a)!important;background:#fff!important;box-shadow:0 10px 24px rgba(75,30,47,.07)}.opt.sel{border-color:var(--t)!important;background:#F8EEF0!important;box-shadow:0 0 0 3px rgba(75,30,47,.10)!important}.rd{border-color:rgba(201,161,93,.58)!important}.opt.sel .rd{background:var(--t)!important;border-color:var(--t)!important;box-shadow:inset 0 0 0 4px #fff}.ot{font-size:15px!important;color:#302128!important}.nav{position:relative;margin-top:24px!important}.btn-ghost{border-color:rgba(201,161,93,.42)!important;color:var(--t)!important;border-radius:12px!important}.btn-next,.btn-gold{border-radius:12px!important;background:linear-gradient(135deg,#B67D2F,var(--a),#E4C17B)!important;color:#260B16!important;font-weight:800!important}.btn-next:not(.on){opacity:.35!important}.btn-pri{background:linear-gradient(135deg,#B67D2F,var(--a),#E4C17B)!important;color:#260B16!important;font-weight:800!important;border-radius:14px!important}
+
+/* insight premium */
+.insight{max-width:1080px!important;margin:0 auto!important;padding:28px!important;text-align:left!important;color:var(--ink)!important;background:linear-gradient(180deg,#FFFDF8,#FFF7EC)!important;border:1px solid rgba(201,161,93,.34)!important;border-radius:28px!important;box-shadow:var(--shadow-paper)!important}.insight:before{display:none!important}.lux-insight-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);gap:28px;align-items:center}.lux-insight-kick{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;color:#A46F25;margin-bottom:18px}.lux-insight-kick .ic{width:44px;height:44px;padding:12px;border-radius:50%;background:var(--t);color:var(--gold-l)}.lux-insight-title{font-family:'Fraunces',serif;font-weight:400;color:var(--t);font-size:clamp(34px,4.4vw,58px);line-height:1.04;letter-spacing:-.04em;margin-bottom:18px}.lux-insight-copy{font-size:16px;line-height:1.8;color:#34232B}.lux-insight-copy b{color:var(--t)}.lux-art{min-height:320px;display:flex;align-items:center;justify-content:center;position:relative}.lux-art:before{content:'';position:absolute;width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,rgba(201,161,93,.15),transparent 70%)}.lux-art-card{position:relative;width:min(310px,80vw);height:250px;border-radius:26px;background:linear-gradient(145deg,#4B1E2F,#260B16);border:1px solid rgba(201,161,93,.42);box-shadow:0 28px 60px rgba(38,11,22,.22);display:flex;align-items:center;justify-content:center;overflow:hidden}.lux-art-card:after{content:'';position:absolute;inset:14px;border:1px solid rgba(232,207,154,.18);border-radius:20px}.lux-art .ins-art{width:160px!important;height:112px!important;margin:0!important;z-index:1}.lux-art .ins-art:before{display:none!important}.lux-art svg{stroke:var(--gold-l)!important;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25))}.lux-diamond-dot{position:absolute;right:38px;top:36px;width:12px;height:12px;background:#fff;border-radius:50%;box-shadow:0 0 26px #fff,0 0 48px var(--sapphire)}.lux-conclusion{margin-top:20px;padding:15px 18px;border:1px solid rgba(201,161,93,.30);border-radius:16px;background:#FFF3DF;color:var(--t);font-family:'Fraunces',serif;font-size:19px;line-height:1.35}.insight .btn-gold{margin-top:22px!important}
+
+/* lead */
+.lead-head{color:#F8EDDA!important;padding:34px 0 24px!important}.lead-head h2{font-size:44px!important;color:#FFF7E8!important}.lead-head p{color:#E8D7BC!important}.lh-badge{background:rgba(255,255,255,.05)!important;color:var(--gold-l)!important;border:1px solid rgba(201,161,93,.28)!important}.field input,.field textarea{border-color:rgba(201,161,93,.42)!important;border-radius:14px!important}.privacy{color:#8A747A!important}
+
+/* resultado */
+.r-card{max-width:1100px!important;margin:0 auto!important;border-radius:30px!important;border:1px solid rgba(201,161,93,.32)!important;box-shadow:var(--shadow-lux)!important;background:var(--paper)!important}.r-hero{display:grid!important;grid-template-columns:minmax(260px,.8fr) minmax(0,1.05fr)!important;gap:28px!important;align-items:center!important;text-align:left!important;padding:42px!important;background:linear-gradient(135deg,#FFF5E4,#FFFDF8)!important}.lux-result-art{min-height:330px;border-radius:24px;overflow:hidden;border:1px solid rgba(201,161,93,.28);box-shadow:0 22px 60px rgba(75,30,47,.16);background:#F6EBD8}.lux-result-art img{width:100%;height:100%;object-fit:cover;display:block}.r-icon{display:none!important}.r-name{font-size:clamp(38px,4.5vw,62px)!important;letter-spacing:-.04em!important;color:var(--t)!important;margin-bottom:14px!important}.r-phrase{font-family:'Fraunces',serif!important;font-size:24px!important;color:#7A4B16!important;max-width:560px!important;margin:0!important}.r-sec{padding:34px 40px!important}.r-eye{font-size:12px!important;color:#A46F25!important;font-weight:800!important}.r-eye .ic{color:var(--t)!important}.scorecard{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:14px!important}.score-card{border-radius:18px!important;border-color:rgba(201,161,93,.28)!important;box-shadow:0 8px 22px rgba(75,30,47,.06)!important}.score-card.worst{border-color:var(--a)!important;box-shadow:0 0 0 2px rgba(201,161,93,.14),0 14px 32px rgba(75,30,47,.10)!important}.sc-head{flex-direction:column!important}.sc-analogy{color:var(--t)!important}.gauge-panel,.cost,.emo,.r-cta,.start-panel{border-radius:22px!important}.r-cta{background:linear-gradient(145deg,var(--t),#19040B)!important;border:1px solid rgba(201,161,93,.26)!important}.r-cta h3{font-size:34px!important}
+
+@media(max-width:900px){
+  body{padding:10px!important;background:linear-gradient(180deg,#210813 0 225px,var(--bg) 225px 100%)!important}.wrap{max-width:440px!important}.intro{grid-template-columns:1fr!important;min-height:auto!important;padding:24px 20px!important;border-radius:26px!important}.intro:after{width:190px;height:190px;right:-70px;top:12px}.gem-emblem{width:66px!important;height:66px!important}.kicker{font-size:10px!important}.kicker:before,.kicker:after{width:24px!important}.intro h1{font-size:40px!important}.intro-sub{font-size:15.5px!important;line-height:1.5!important}.intro .btn-pri{width:100%;padding:14px 18px!important}.intro-foot{display:flex!important;gap:7px!important}.intro-foot span{font-size:11px!important;padding:6px 9px!important}
+  #sc-journey{padding:16px 10px 18px!important;border-radius:24px!important}.rail-label{display:none!important}.rail-dot{width:30px!important;height:30px!important}.rail:before{top:14px!important}.prog{padding:0 6px}.card{border-radius:22px!important}.card-tag{padding:14px 16px!important}.card-tag .ic{width:36px!important;height:36px!important}.card-body{padding:22px 16px 18px!important}.q-text{font-size:24px!important}.q-text .qn{width:34px;height:34px;font-size:17px;margin-right:8px}.nav{position:sticky;bottom:8px;background:rgba(32,8,19,.92);padding:10px;border-radius:16px;margin-left:-6px;margin-right:-6px;z-index:5}.btn-ghost,.btn-next{font-size:12px!important;padding:11px 12px!important}.lux-insight-grid{grid-template-columns:1fr!important}.insight{padding:20px 16px!important;border-radius:22px!important}.lux-insight-title{font-size:31px!important}.lux-insight-copy{font-size:14.5px!important}.lux-art{min-height:210px;order:-1}.lux-art-card{height:190px;width:100%}.lux-art .ins-art{width:130px!important}.lux-conclusion{font-size:17px}.lead-head h2{font-size:34px!important}.lead-form,.lead-foot{padding-left:18px!important;padding-right:18px!important}.lf-row{grid-template-columns:1fr!important}.r-hero{grid-template-columns:1fr!important;padding:22px!important;text-align:center!important}.lux-result-art{min-height:260px}.r-name{font-size:36px!important;text-align:center}.r-phrase{font-size:20px!important;text-align:center;margin:auto!important}.r-sec{padding:24px 18px!important}.scorecard{grid-template-columns:1fr!important}.cost-cards{grid-template-columns:1fr!important}.r-cta h3{font-size:27px!important}
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   V4 — Insights e Diagnóstico com direção visual aprovada
+═══════════════════════════════════════════════════════════════════════ */
+:root{--v4-wine:#4B1E2F;--v4-wine-deep:#1B050C;--v4-gold:#C9A15D;--v4-gold-soft:#E8CF9A;--v4-paper:#FFF9EF;--v4-ivory:#F5F0E8;--v4-ink:#2A1620;--v4-line:#E3CDAE;--v4-green:#1F7A53;--v4-amber:#A66A18;--v4-red:#7A2531;}
+.v4-report-shell{max-width:1120px;margin:0 auto;background:linear-gradient(180deg,#FFFDF8,#FFF7EC);border:1px solid rgba(201,161,93,.38);border-radius:28px;box-shadow:0 26px 70px rgba(42,2,16,.22);overflow:hidden;position:relative;color:var(--v4-ink)}
+.v4-report-shell:before{content:'';position:absolute;inset:12px;border:1px solid rgba(201,161,93,.18);border-radius:22px;pointer-events:none;z-index:2}.v4-diamond-line{display:flex;align-items:center;gap:16px;color:#A46F25;letter-spacing:.16em;text-transform:uppercase;font-size:12px;font-weight:800;margin-bottom:20px}.v4-diamond-line:before{content:'✧';font-size:17px;color:var(--v4-gold)}.v4-diamond-line:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,rgba(201,161,93,.55),transparent)}
+.v4-insight-card{display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.08fr);min-height:560px}.v4-insight-copy{padding:54px 48px 42px;position:relative;z-index:3}.v4-insight-title{font-family:'Fraunces',serif;color:var(--v4-wine);font-weight:400;font-size:clamp(40px,4.7vw,62px);line-height:1.04;letter-spacing:-.045em;margin:0 0 26px}.v4-insight-text{font-size:17px;line-height:1.75;color:#2F2228;max-width:560px}.v4-insight-text b{color:var(--v4-wine);font-weight:800}.v4-note{margin-top:24px;padding:18px 22px;border:1px solid rgba(201,161,93,.38);border-radius:16px;background:rgba(255,243,223,.75);display:flex;gap:16px;align-items:center;color:#7A4B16;font-family:'Fraunces',serif;font-size:19px;line-height:1.32}.v4-note-icon{width:44px;height:44px;min-width:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(201,161,93,.55);background:#FFF9EF;color:#A46F25}.v4-insight-copy .btn{margin-top:24px}.v4-hero-art{position:relative;min-height:560px;overflow:hidden;background:#220812}.v4-hero-art:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#FFF9EF 0%,rgba(255,249,239,.92) 7%,rgba(255,249,239,.34) 22%,transparent 42%);z-index:1}.v4-hero-art img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02) contrast(1.02)}
+.v4-result{max-width:1120px;margin:0 auto}.v4-result-card{background:linear-gradient(180deg,#FFFDF8,#FFF8EF);border:1px solid rgba(201,161,93,.38);border-radius:28px;box-shadow:0 26px 70px rgba(42,2,16,.22);overflow:hidden;color:var(--v4-ink)}.v4-result-hero{display:grid;grid-template-columns:minmax(320px,.88fr) minmax(0,1fr);align-items:center}.v4-result-img{min-height:360px;overflow:hidden;position:relative;background:#2B0A16}.v4-result-img:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 62%,rgba(255,249,239,.74));}.v4-result-img img{width:100%;height:100%;object-fit:cover;display:block}.v4-result-copy{padding:44px 48px}.v4-overline{color:#A46F25;text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:12px;margin-bottom:18px;display:flex;align-items:center;gap:10px}.v4-overline:before{content:'✧';color:var(--v4-gold)}.v4-result-title{font-family:'Fraunces',serif;font-size:clamp(42px,5vw,66px);line-height:1.02;letter-spacing:-.045em;color:var(--v4-wine);font-weight:400;margin:0 0 16px}.v4-result-phrase{font-family:'Fraunces',serif;color:#7A4B16;font-size:25px;line-height:1.28;margin-bottom:20px}.v4-result-copy p{font-size:16px;line-height:1.72;color:#2F2228}.v4-section{padding:34px 40px;border-top:1px solid rgba(201,161,93,.28)}.v4-section-title{color:#A46F25;text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:12px;margin:0 0 20px}.v4-meaning-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:start}.v4-meaning-grid p{font-size:15px;line-height:1.72}.v4-reframe{border:1px solid rgba(201,161,93,.30);background:#FFF3DF;border-radius:16px;padding:18px;color:var(--v4-wine);font-weight:600}.v4-score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.v4-score-card{background:rgba(255,255,255,.56);border:1px solid rgba(201,161,93,.32);border-radius:18px;padding:20px;box-shadow:0 10px 25px rgba(75,30,47,.05)}.v4-score-card.worst{border-color:var(--v4-gold);box-shadow:0 0 0 2px rgba(201,161,93,.16),0 14px 32px rgba(75,30,47,.08)}.v4-stage{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8C6C3D;font-weight:800}.v4-score-title{font-family:'Fraunces',serif;color:var(--v4-wine);font-size:21px;line-height:1.1;margin:7px 0 8px}.v4-score-num{font-family:'Fraunces',serif;color:#A66A18;font-size:44px;line-height:1}.v4-score-num small{font-size:18px;color:#6F6367}.v4-progress{height:7px;border-radius:999px;background:#E8DDC7;margin:12px 0 14px;overflow:hidden}.v4-progress span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#8F421B,#CB7B2B)}.v4-score-card.green .v4-score-num{color:var(--v4-green)}.v4-score-card.green .v4-progress span{background:var(--v4-green)}.v4-score-desc{font-size:14px;line-height:1.55;color:#3D3337}.v4-start-here{display:inline-flex;margin-top:12px;background:var(--v4-gold);border-radius:999px;padding:5px 11px;color:#2A0B14;font-size:11px;font-weight:800}
+.v4-gauge-wrap{display:grid;grid-template-columns:.7fr 1.25fr .55fr;gap:26px;align-items:center;background:rgba(255,251,244,.7);border:1px solid rgba(201,161,93,.28);border-radius:22px;padding:32px 28px}.v4-gauge-left p{font-size:14px;line-height:1.65}.v4-gauge-left hr{border:none;border-top:1px solid rgba(201,161,93,.42);margin:18px 0}.v4-gauge-title{text-align:center;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800;color:#7A5A2E;margin-bottom:8px}.v4-gauge-svg{width:100%;max-width:520px;display:block;margin:auto;filter:drop-shadow(0 12px 20px rgba(75,30,47,.12))}.v4-gauge-score{text-align:center}.v4-gauge-score .n{font-family:'Fraunces',serif;font-size:88px;color:#B57A27;line-height:.9}.v4-gauge-score .d{font-family:'Fraunces',serif;font-size:28px;color:#39272F}.v4-gauge-score .label{font-family:'Fraunces',serif;font-style:italic;font-size:24px;color:#5B3946;margin-top:12px}.v4-gauge-note{text-align:center;font-family:'Fraunces',serif;font-size:19px;line-height:1.35;max-width:620px;margin:22px auto 8px;color:#2A1620}.v4-zone{text-align:center;font-size:14px;color:#6A555D}.v4-zone b{color:var(--v4-green)}
+.v4-cost-card{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center}.v4-cost-headline{font-family:'Fraunces',serif;color:var(--v4-wine);font-size:clamp(34px,4vw,52px);line-height:1.08;letter-spacing:-.035em;margin-bottom:20px}.v4-cost-copy{font-size:16px;line-height:1.7}.v4-insight-box,.v4-meaning-box{border:1px solid rgba(201,161,93,.35);border-radius:16px;padding:18px;margin-top:22px;background:rgba(255,249,239,.72)}.v4-insight-box b{font-family:'Fraunces',serif;color:#A66A18;font-size:30px}.v4-bars{min-height:420px;position:relative;display:grid;grid-template-columns:1fr 1fr .35fr;gap:28px;align-items:end;padding:54px 20px 54px}.v4-bars:before{content:'';position:absolute;left:20px;right:20px;bottom:54px;height:1px;background:#B88A46}.v4-bar{text-align:center;position:relative}.v4-bar .label{text-transform:uppercase;letter-spacing:.1em;font-size:13px;font-weight:800;color:#3A2630}.v4-bar .value{font-family:'Fraunces',serif;font-size:36px;color:#7A4B16;margin:6px 0 12px}.v4-pedestal{margin:auto;border:1px solid rgba(201,161,93,.45);border-radius:8px 8px 2px 2px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),0 12px 26px rgba(75,30,47,.12)}.v4-pedestal.small{width:120px;height:115px;background:linear-gradient(145deg,#5A1D2D,#8C5732)}.v4-pedestal.big{width:170px;height:325px;background:linear-gradient(145deg,#AF7627,#E2BE76 45%,#8A591E)}.v4-x{align-self:center;text-align:center;color:#7A4B16;font-family:'Fraunces',serif}.v4-x strong{font-size:52px}.v4-metric-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(201,161,93,.30);border-radius:16px;overflow:hidden;margin-top:20px}.v4-metric{padding:16px 18px;background:rgba(255,249,239,.62);border-right:1px solid rgba(201,161,93,.24);font-size:13px}.v4-metric:last-child{border-right:none}.v4-metric b{display:block;color:#3A2630;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}.v4-fineprint{text-align:center;font-size:12px;color:#7A6A6F;margin-top:14px}
+.v4-cta-card{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:center}.v4-cta-copy{padding:36px 34px}.v4-cta-title{font-family:'Fraunces',serif;color:var(--v4-wine);font-size:clamp(34px,4vw,54px);line-height:1.07;letter-spacing:-.035em;margin:0 0 18px}.v4-cta-copy p{font-size:16px;line-height:1.68}.v4-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.v4-step{border:1px solid rgba(201,161,93,.34);border-radius:14px;padding:14px;text-align:center;background:rgba(255,255,255,.50)}.v4-step-n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#B67D2F,var(--v4-gold));color:#2A0B14;font-weight:900;margin-bottom:9px}.v4-step b{display:block;font-family:'Fraunces',serif;color:var(--v4-wine);line-height:1.15;margin-bottom:6px}.v4-step span{font-size:12.5px;line-height:1.35}.v4-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(201,161,93,.30);border-radius:14px;margin:20px 0;overflow:hidden}.v4-chip{padding:13px;text-align:center;font-size:13px;border-right:1px solid rgba(201,161,93,.25)}.v4-chip:last-child{border-right:none}.v4-anchor{text-align:center;font-family:'Fraunces',serif;color:#5B3946;font-size:18px;margin:18px 0}.v4-cta-button{width:100%;display:flex!important;font-size:22px!important;padding:18px 26px!important}.v4-price{text-align:center;font-size:14px;margin-top:14px;color:#5F4B53}.v4-map-art{min-height:640px;overflow:hidden;position:relative;background:#210813}.v4-map-art:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#FFF9EF 0,rgba(255,249,239,.82) 8%,rgba(255,249,239,.25) 23%,transparent 43%);z-index:1}.v4-map-art img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:900px){.v4-report-shell,.v4-result-card{border-radius:22px}.v4-insight-card,.v4-result-hero,.v4-cost-card,.v4-cta-card,.v4-meaning-grid{grid-template-columns:1fr}.v4-insight-copy,.v4-result-copy,.v4-cta-copy{padding:28px 22px}.v4-hero-art{min-height:310px;order:-1}.v4-hero-art:before{background:linear-gradient(180deg,transparent 0,rgba(255,249,239,.12) 55%,#FFF9EF 100%)}.v4-result-img{min-height:250px}.v4-result-img:after{background:linear-gradient(180deg,transparent 45%,rgba(255,249,239,.9))}.v4-score-grid,.v4-steps,.v4-gauge-wrap,.v4-metric-strip,.v4-chips{grid-template-columns:1fr}.v4-gauge-wrap{padding:22px 16px}.v4-gauge-score .n{font-size:72px}.v4-cost-card{gap:10px}.v4-bars{grid-template-columns:1fr;min-height:auto;padding:20px}.v4-bars:before{display:none}.v4-pedestal.small,.v4-pedestal.big{width:100%;height:78px}.v4-x strong{font-size:42px}.v4-map-art{min-height:300px;order:-1}.v4-map-art:before{background:linear-gradient(180deg,transparent 0,rgba(255,249,239,.2) 60%,#FFF9EF 100%)}.v4-insight-title,.v4-result-title,.v4-cost-headline,.v4-cta-title{font-size:34px}.v4-score-grid{gap:12px}}
+
+.v4-chip{display:flex;align-items:center;justify-content:center;gap:7px}.v4-chip .ic{color:var(--v4-gold);font-size:15px}.v4-metric{display:flex;gap:11px;align-items:flex-start}.v4-metric-ic{color:var(--v4-gold);font-size:19px;margin-top:1px;flex:0 0 auto}.v4-metric-ic .ic{width:19px;height:19px}.v4-stage .ic{color:var(--v4-gold);font-size:14px;margin-right:4px;vertical-align:-.12em}
 </style>
 </head>
 <body>
@@ -242,18 +332,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 <div class="screen active" id="sc-intro">
   <div class="intro">
     <div class="intro-sig">
-      <svg class="compass" width="118" height="118" viewBox="0 0 120 120" aria-hidden="true">
-        <circle class="cmp-ring" cx="60" cy="60" r="52"/><circle class="cmp-ring2" cx="60" cy="60" r="43"/>
-        <g class="cmp-ticks"><path d="M60 10v8M60 102v8M10 60h8M102 60h8"/><path d="M27 27l4.5 4.5M93 27l-4.5 4.5M27 93l4.5-4.5M93 93l-4.5-4.5" opacity=".55"/></g>
-        <g class="cmp-needle"><path class="ndl-w" d="M60 60 60 54 26 60 60 66z"/><path class="ndl-e" d="M60 60 60 54 94 60 60 66z"/><path class="ndl-s" d="M60 60 54 60 60 96 66 60z"/><path class="ndl-n" d="M60 60 54 60 60 24 66 60z"/></g>
-        <circle class="cmp-center" cx="60" cy="60" r="3.6"/>
+      <svg class="gem-emblem" width="112" height="112" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="gemG" x1="20" y1="18" x2="100" y2="104" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#EAD09A"/><stop offset=".5" stop-color="#C9A15D"/><stop offset="1" stop-color="#9A6E2E"/></linearGradient></defs>
+        <circle cx="60" cy="60" r="50" fill="none" stroke="url(#gemG)" stroke-opacity=".38" stroke-width="1.2"/>
+        <path d="M42 40 H78 L94 56 L60 99 L26 56 Z" fill="rgba(201,161,93,.10)" stroke="url(#gemG)" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M26 56 H94 M42 40 L52 56 L60 99 M78 40 L68 56 L60 99 M52 56 L60 40 M68 56 L60 40" stroke="url(#gemG)" stroke-width="1.3" stroke-linejoin="round" opacity=".82" fill="none"/>
+        <path d="M88 28 l1.7 4.3 4.3 1.7 -4.3 1.7 -1.7 4.3 -1.7 -4.3 -4.3 -1.7 4.3 -1.7 z" fill="#E0C188" class="gem-spark"/>
       </svg>
     </div>
-    <div class="kicker">Diagnóstico Agenda Magnética</div>
-    <h1>Descubra onde sua competência está ficando <em>invisível</em></h1>
-    <p class="intro-sub">Você pode ser uma excelente profissional da saúde e mesmo assim faturar abaixo do que merece. Não por falta de competência — mas porque ela fica invisível em algum ponto da jornada do paciente. Em 4 minutos, você descobre exatamente qual é o seu.</p>
-    <button class="btn btn-pri" onclick="start()">Iniciar meu diagnóstico <span class="ic" data-ic="arrow-right"></span></button>
-    <div class="intro-foot"><span><span class="ic" data-ic="clock"></span> 4 minutos</span><span><span class="ic" data-ic="compass"></span> Resultado na hora</span><span><span class="ic" data-ic="lock"></span> Confidencial</span></div>
+    <div class="kicker">Raio-X da Agenda Magnética™</div>
+    <h1>Descubra o que te mantém <em>invisível</em> — e te impede de colocar de 4 a 10 novos pacientes na cadeira toda semana</h1>
+    <p class="intro-sub">Um diagnóstico estratégico de 4 minutos sobre a sua agenda.</p>
+    <button class="btn btn-pri" onclick="start()">Iniciar meu Raio-X <span class="ic" data-ic="arrow-right"></span></button>
+    <div class="intro-foot"><span><span class="ic" data-ic="clock"></span> 4 min</span><span><span class="ic" data-ic="file-chart"></span> Relatório em PDF</span><span><span class="ic" data-ic="lock"></span> Privado</span></div>
   </div>
 </div>
 
@@ -338,7 +430,11 @@ const ICONS={
   'user-heart':'<circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c0-3.2 2.6-5.3 5.5-5.3"/><path d="M17.8 14c-1-1.1-2.8-.7-2.8.8 0 1.3 2.8 3.2 2.8 3.2s2.8-1.9 2.8-3.2c0-1.5-1.8-1.9-2.8-.8z"/>',
   'seedling':'<path d="M12 21v-7"/><path d="M12 14c-3.5 0-5.5-2-5.5-5.5C10 8.5 12 10.5 12 14z"/><path d="M12 12c3 0 4.5-1.7 4.5-4.5C13.5 7.5 12 9.2 12 12z"/>',
   'stack':'<path d="M12 3l8 4-8 4-8-4 8-4z"/><path d="M4 12l8 4 8-4M4 16.5l8 4 8-4"/>',
-  'tools':'<path d="M14.5 6.5a3.5 3.5 0 0 0-4.7 4.2l-5.6 5.6a1.5 1.5 0 0 0 2.1 2.1l5.6-5.6a3.5 3.5 0 0 0 4.2-4.7l-2 2-1.8-1.8 2-2z"/>'
+  'tools':'<path d="M14.5 6.5a3.5 3.5 0 0 0-4.7 4.2l-5.6 5.6a1.5 1.5 0 0 0 2.1 2.1l5.6-5.6a3.5 3.5 0 0 0 4.2-4.7l-2 2-1.8-1.8 2-2z"/>',
+  'file-chart':'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 17v-2.5M12 17v-5M15 17v-3.5"/>',
+  'diamond':'<path d="M6 3h12l3.5 5.5L12 21 2.5 8.5z"/><path d="M2.5 8.5h19M8 3l1.5 5.5L12 21M16 3l-1.5 5.5L12 8.5"/>',
+  'eye':'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',
+  'trending-up':'<path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>'
 };
 function svg(inner){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+(inner||'')+'</svg>'}
 function I(n){return '<span class="ic">'+svg(ICONS[n])+'</span>'}
@@ -346,14 +442,14 @@ function paintIcons(root){(root||document).querySelectorAll('span.ic[data-ic]').
 
 /* ════ ILUSTRAÇÕES DOS INSIGHTS ════ */
 const ILLUS={
-  'balde':'<path d="M26 18h28l-3.5 26a3 3 0 0 1-3 2.6H32.5a3 3 0 0 1-3-2.6z"/><path d="M24 18h32"/><circle cx="38" cy="30" r="1.1" fill="currentColor" stroke="none"/><path d="M38 47.5c0 2 2.4 2 2.4 0 0-1.4-1.2-2.6-1.2-2.6s-1.2 1.2-1.2 2.6z"/>',
-  'vitrine':'<path d="M18 22h44v22H18z"/><path d="M18 30h44M32 30v14M48 30v14"/><path d="M16 22l3-6h42l3 6"/>',
-  'frozen':'<path d="M40 11v34M25 19.5l30 17M55 19.5l-30 17"/><path d="M40 16l-3.5 3M40 16l3.5 3M40 40l-3.5-3M40 40l3.5-3M28 23l.5 4.5M28 23l-4 1.5M52 23l-.5 4.5M52 23l4 1.5"/>',
-  'conduzir':'<circle cx="40" cy="28" r="15"/><path d="M48.5 19.5 41 30 31.5 37.5 39 27z"/><circle cx="40" cy="28" r="1.5" fill="currentColor" stroke="none"/>',
-  'circulate':'<path d="M27 28a13 13 0 1 1 5 10.4"/><path d="M27 37v-9h9"/><circle cx="40" cy="28" r="2.2" fill="currentColor" stroke="none"/>',
-  'seed':'<path d="M40 46V29"/><path d="M40 29c-5 0-8-3-8-8 5 0 8 3 8 8z"/><path d="M40 26c4 0 6.5-2.5 6.5-6.5C42 19.5 40 22 40 26z"/>',
-  'foundation':'<path d="M22 45h36M22 38.5h36M22 32h36"/><path d="M22 45V32l18-8 18 8v13"/><path d="M31 38.5V32M49 38.5V32M40 45v-6.5"/>',
-  'tools':'<path d="M44 19a6.5 6.5 0 0 0-8.5 7.6L23 39a2.6 2.6 0 0 0 3.7 3.7l12.4-12.5A6.5 6.5 0 0 0 47 21.5l-4.3 4.3-3-3 4.3-4.3z"/>'
+  'balde':'<path d="M29 20h22l-2.5 23a3 3 0 0 1-3 2.7H34.5a3 3 0 0 1-3-2.7z"/><path d="M26 20h28"/><path d="M40 9v8" stroke-dasharray="1.5 3"/><path d="M37.2 46.4c0 1.9 2.8 1.9 2.8 0 0-1.2-1.4-2.5-1.4-2.5s-1.4 1.3-1.4 2.5z"/><path d="M30.5 38.5c-1.5 1.5-2 2.4-2 3.4 0 1.1 3 1.1 3 0 0-1-.8-1.9-1-3.4z"/><path d="M49.5 38.5c1.5 1.5 2 2.4 2 3.4 0 1.1-3 1.1-3 0 0-1 .8-1.9 1-3.4z"/><path d="M45.6 47.2c0 1.5 2.3 1.5 2.3 0 0-1-1.2-2.1-1.2-2.1s-1.1 1.1-1.1 2.1z"/>',
+  'vitrine':'<path d="M20 22h40v22H20z"/><path d="M17 22l3.6-6h38.8l3.6 6"/><path d="M20 30h40"/><path d="M33 30v14M47 30v14"/><path d="M40 34.5l2.4 3-2.4 3-2.4-3z"/>',
+  'frozen':'<rect x="24" y="16" width="32" height="26" rx="3"/><path d="M24 23h32M31 13v5M49 13v5"/><path d="M40 29v9M35.8 31.5l8.4 4M44.2 31.5l-8.4 4M40 29l-1.6 1.6M40 29l1.6 1.6"/>',
+  'conduzir':'<rect x="27" y="13" width="26" height="33" rx="3"/><path d="M35 13v-2a5 5 0 0 1 10 0v2"/><circle cx="40" cy="25" r="3.3"/><path d="M40 28.3v8.5M34.5 32l5.5-1.8 5.5 1.8"/><circle cx="34" cy="34.5" r="1"/><circle cx="46" cy="31.5" r="1"/>',
+  'circulate':'<path d="M24 28h32v14a2 2 0 0 1-2 2H26a2 2 0 0 1-2-2z"/><path d="M24 28l4-6.5h24l4 6.5"/><path d="M40 21.5v22.5"/><path d="M31 35.5l1.6 2.6 1.6-2.6-1.6-2.6zM47.5 37l1.3 2 1.3-2-1.3-2z"/>',
+  'seed':'<path d="M40 46V27"/><path d="M40 27c-5 0-8-3-8-8 5 0 8 3 8 8z"/><path d="M40 24c4 0 6.5-2.5 6.5-6.5C42 17.5 40 20 40 24z"/><path d="M40 9l1.4 3.4 3.4 1.4-3.4 1.4L40 19l-1.4-3.4L35.2 14l3.4-1.4z"/>',
+  'foundation':'<path d="M24 44h32M24 37h32M24 30h32"/><path d="M24 44V30l16-7 16 7v14"/><path d="M33 37v-7M47 37v-7"/>',
+  'tools':'<path d="M45 18a6 6 0 0 0-8 7L25 37a2.5 2.5 0 0 0 3.5 3.5L40.5 28.5a6 6 0 0 0 8-7l-4.2 4.2-2.9-2.9z"/>'
 };
 function illusSVG(name){return '<svg viewBox="0 0 80 56" fill="none" stroke="var(--gold-l)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+(ILLUS[name]||ILLUS['conduzir'])+'</svg>'}
 
@@ -362,6 +458,8 @@ const FIN_E_CUR=[['Menos que R$ 10 mil',7500],['Entre R$ 10 mil e R$ 20 mil',150
 const FIN_E_DES=[['Entre R$ 30 mil e R$ 50 mil',40000],['Entre R$ 50 mil e R$ 75 mil',62500],['Entre R$ 75 mil e R$ 100 mil',87500],['Entre R$ 100 mil e R$ 200 mil',150000],['Entre R$ 200 mil e R$ 300 mil',250000],['Acima de R$ 300 mil',350000]];
 const FIN_B_CUR=[['Ainda não tenho faturamento estabelecido',0],['Faturamento irregular — abaixo de R$ 3 mil',1500],['Entre R$ 3 mil e R$ 8 mil',5500],['Acima de R$ 8 mil',10000]];
 const FIN_B_DES=[['Quero atingir consistência — R$ 5 mil a R$ 10 mil por mês',7500],['Minha meta é R$ 10 mil a R$ 20 mil por mês',15000],['Quero chegar a R$ 20 mil a R$ 40 mil por mês',30000],['Minha visão é faturar acima de R$ 40 mil por mês',50000]];
+const TICKET_FAIXAS=[['Até R$ 500',350],['Entre R$ 500 e R$ 1.000',750],['Entre R$ 1.000 e R$ 2.000',1500],['Entre R$ 2.000 e R$ 4.000',3000],['Acima de R$ 4.000',5500]];
+const PLANO_MULT=12;
 
 /* ════ SHARED ════ */
 const SHARED=[
@@ -372,8 +470,8 @@ const SHARED=[
    q:'Se você pudesse resolver uma coisa hoje, qual seria?',
    opts:['Ter mais pacientes chegando — encher a agenda','Parar de ser comparada pelo preço e ser escolhida pelo meu valor','Que os pacientes fechem o tratamento completo, não só o básico','Que eles voltem e me indiquem, sem eu precisar correr atrás'],sc:[]},
   {type:'insight',icon:'droplet',illus:'balde',stageNum:0,kick:'A verdade que ninguém te conta',
-   title:'Sim, você precisa de mais pacientes. E é por isso que não podemos começar por aí.',
-   html:'Presta atenção: hoje existem furos te mantendo invisível. Se a gente abrir a torneira da divulgação agora, a água escapa pelos furos <b>antes de encher o balde</b> — você atrai gente, mas ela compara, esfria e vai embora. Sua solução chega ao mercado <b>sem força magnética</b>. Existe um nome pra isso: a <b>Síndrome da Competência Invisível™</b>. Atrair paciente é a última peça — nunca a primeira. Primeiro a gente acha e tapa os furos. Aí sim, cada paciente que entra fica, fecha e te indica.'},
+   title:'Existem pacientes de sobra na sua região. O que falta é você virar a escolha óbvia de quem paga.',
+   html:'Você sente que quase ninguém chega — mas os pacientes existem e escolhem quem aparece com autoridade, nem sempre quem entrega o melhor resultado. Invisível, o seu consultório é uma porta que eles não enxergam; e os poucos que aparecem comparam, esfriam e somem antes de marcar. Existe um nome pra esse vazamento de oportunidades: a <b>Síndrome da Competência Invisível™</b>. A boa notícia: dá pra virar a número 1 na mente de quem investe — e encher a cadeira com <b>4 a 10 novos pacientes por semana</b>. Vamos achar, trava por trava, onde a sua agenda está vazando.'},
   {type:'q',id:'routing',icon:'map-pin',stage:'Seu momento',name:'Perfil',stageNum:0,routing:true,
    q:'Qual frase descreve melhor o seu momento profissional hoje?',
    opts:['Tenho volume de atendimentos, mas poderia faturar muito mais pelo que entrego','Tenho uma prática consolidada e quero alcançar um próximo nível','Já tenho base de pacientes, mas meu crescimento travou ou está abaixo do esperado','Estou em transição — mudei de especialidade, público ou área e preciso me reposicionar','Estou no início — me formei há pouco ou estou estruturando minha prática do zero'],sc:[]}
@@ -431,6 +529,10 @@ const SPINE_E=[
    opts:['Fico curiosa pra entender o que ela faz de diferente','Penso: "sou tão boa quanto — só me falta a estratégia certa"','No fundo acho meu trabalho melhor que o dela, e me incomoda ela aparecer mais','Fico me perguntando como alguém com menos preparo chega mais longe','Sinto que não sei o que ela tem que eu não tenho'],sc:[]},
   {type:'q',id:'e_cur',icon:'money',stage:'Financeiro',name:'Onde você está',stageNum:0,fin:'cur',
    q:'Hoje, sua prática fatura aproximadamente por mês:',opts:FIN_E_CUR.map(x=>x[0]),sc:[]},
+  {type:'q',id:'e_ticket',icon:'money',stage:'Financeiro',name:'Ticket médio',stageNum:0,fin:'ticket',
+   q:'Qual é o seu ticket médio por consulta?',
+   sub:'Ou seja: quanto, em média, cada paciente gasta com você em cada atendimento.',
+   opts:TICKET_FAIXAS.map(x=>x[0]),sc:[]},
   {type:'q',id:'e_des',icon:'target',stage:'Financeiro',name:'Onde você merece estar',stageNum:0,fin:'des',
    q:'Pela sua experiência e pelos resultados que entrega, quanto você sente que deveria estar faturando?',opts:FIN_E_DES.map(x=>x[0]),sc:[]}
 ];
@@ -517,6 +619,7 @@ function questionHTML(q){
   const isLast=idx===steps.length-1;
   return `<div class="card"><div class="card-tag">${I(q.icon)}<span class="ct-stage">${q.stage}</span><span class="ct-name">${q.name}</span></div>
     <div class="card-body"><div class="q-text"><span class="qn">${questionList().indexOf(q)+1}.</span>${q.q}</div>
+    ${q.sub?`<p class="q-sub">${q.sub}</p>`:''}
     <div class="opts">${opts}</div>
     <div class="nav"><button class="btn btn-ghost" onclick="back()" style="visibility:${idx===0?'hidden':'visible'}">${I('arrow-left')} Voltar</button>
     <button class="btn btn-next${sel!==undefined?' on':''}" id="nextbtn" onclick="next()">${isLast?'Ver meu diagnóstico':'Continuar'} ${I('arrow-right')}</button></div></div></div>`;
@@ -565,7 +668,7 @@ function submitLead(){
   const respostasTexto=steps.filter(s=>s.type==='q'&&!s.fin&&ANS[s.id]!==undefined).map(s=>({bloco:s.name,etapa:s.stage,pergunta:s.q,resposta:s.opts[ANS[s.id]]}));
   leadData={nome,wpp,instagram:ig,area:$('f-area').value.trim(),descricao:$('f-desc').value.trim(),bloqueio:$('f-bloq').value.trim(),
     trilha:trail==='e'?'Estabelecida':'Iniciante/Transição',diagnostico:'Diamante na Gaveta',
-    notaTotal:total,notasEtapas:sc,faturamentoAtual:finVal('cur'),faturamentoDesejado:finVal('des'),
+    notaTotal:total,notasEtapas:sc,faturamentoAtual:finVal('cur'),faturamentoDesejado:finVal('des'),ticketMedio:ticketVal(),
     modificadorSCI:hasMod,respostas:ANS,respostas_texto:respostasTexto,timestamp:new Date().toISOString()};
   if(CFG.WEBHOOK_URL){fetch(CFG.WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(leadData)}).catch(console.warn)}
   console.log('[Agenda Magnética] Lead:',leadData);
@@ -602,34 +705,49 @@ function gaugeHTML(total){
   const[nx,ny]=polar(cx,cy,r-20,total);
   return `<svg viewBox="0 0 240 138" class="gauge-svg">
     ${seg(0,38,'#B5462F')}${seg(40,53,'#C98A3A')}${seg(55,68,'#D7B544')}${seg(70,100,'#2E8B72')}
-    <line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="#0C3B38" stroke-width="3.5" stroke-linecap="round"/>
-    <circle cx="${cx}" cy="${cy}" r="7" fill="#0C3B38"/>
+    <line x1="${cx}" y1="${cy}" x2="${nx.toFixed(1)}" y2="${ny.toFixed(1)}" stroke="#34101F" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="${cx}" cy="${cy}" r="7" fill="#34101F"/>
     <text x="120" y="86" text-anchor="middle" class="gauge-num" fill="${tc.c}">${total}</text>
     <text x="120" y="106" text-anchor="middle" class="gauge-den">de 100</text></svg>`;
 }
 
-/* ════ CUSTO ════ */
-function costE(cur,des){
-  if(cur===null||des===null)return'';
-  let gap=des-cur;const positive=gap>0;const monthly=positive?gap:Math.round(cur*0.15);const daily=Math.max(1,Math.round(monthly/22));
-  return `<div class="cost">
-    <div class="cost-kick">${I('trending-down')} O custo de ficar parada</div>
-    <p class="cost-lead">Tem um detalhe que ninguém coloca na conta: enquanto a gaveta fica fechada, sua clínica <b>não para de cobrar</b>. Aluguel, equipe, equipamento, energia — tudo corre, com ou sem paciente na cadeira. Agenda vazia não é estagnação. <b>É sangria.</b></p>
-    <div class="cost-big"><div class="cb-lbl">${positive?'A cada mês, fica na mesa cerca de':'Margem em risco por mês'}</div><div class="cb-num" data-count="${monthly}">${brl(monthly)}</div><div class="cb-sub">${positive?'a diferença entre onde você está e onde deveria estar':'estimativa conservadora de erosão de posição'}</div></div>
-    <div class="cost-daily">${I('clock')} <span>Cada dia útil de agenda parada: <b>${brl(daily)}</b> que você paga mesmo sem faturar.</span></div>
-    <div class="cost-cards"><div class="cc"><div class="cc-lbl">Em 6 meses</div><div class="cc-val">${brl(monthly*6)}</div></div><div class="cc danger"><div class="cc-lbl">Em 12 meses</div><div class="cc-val">${brl(monthly*12)}</div></div></div>
-    <div class="chart-wrap">${twoRoads(cur,des,'e')}<div class="chart-legend"><div class="cl"><span class="sw" style="background:#C77B66"></span> Se nada mudar</div><div class="cl"><span class="sw" style="background:#D4B26A"></span> Com a Agenda Magnética</div></div></div>
-    <div class="cost-tag">A linha vermelha não fica parada — ela desce. Custo fixo sem faturamento não é estagnação, é perda.</div>
-    <div class="cost-punch">Ficar parada não existe. <b>Ou a curva sobe, ou ela desce.</b></div></div>`;
+/* ════ GRÁFICO AVULSO × PLANO ════ */
+function ticketVal(){const i=ANS.e_ticket;if(i===undefined)return null;return TICKET_FAIXAS[i][1]}
+function valueChart(ticket){
+  const N=4,avulso=N*ticket,plano=N*ticket*PLANO_MULT;
+  const baseY=124,top=plano*1.05,fullH=baseY-18;
+  const hA=Math.max(6,(avulso/top)*fullH),hP=(plano/top)*fullH;
+  const bw=92,xA=58,xP=192;
+  const bar=(x,h,fill,stroke)=>`<rect x="${x}" y="${(baseY-h).toFixed(1)}" width="${bw}" height="${h.toFixed(1)}" rx="6" fill="${fill}" stroke="${stroke}" stroke-width="1"/>`;
+  return `<svg viewBox="0 0 342 152" role="img" aria-label="Procedimento avulso versus plano de tratamento">
+    <defs>
+      <linearGradient id="barP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6CB94"/><stop offset="1" stop-color="#C9A15D"/></linearGradient>
+      <linearGradient id="barA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A5A62"/><stop offset="1" stop-color="#532438"/></linearGradient>
+    </defs>
+    <line x1="34" y1="${baseY}" x2="308" y2="${baseY}" stroke="rgba(230,203,148,.22)" stroke-width="1"/>
+    ${bar(xA,hA,'url(#barA)','rgba(230,203,148,.35)')}
+    ${bar(xP,hP,'url(#barP)','none')}
+    <text x="${xA+bw/2}" y="${(baseY-hA-9).toFixed(1)}" text-anchor="middle" fill="#E9DCC6" font-family="Fraunces,serif" font-size="16">${brl(avulso)}</text>
+    <text x="${xP+bw/2}" y="${(baseY-hP-10).toFixed(1)}" text-anchor="middle" fill="#E6CB94" font-family="Fraunces,serif" font-size="20" font-weight="600">${brl(plano)}</text>
+    <text x="${xA+bw/2}" y="${baseY+17}" text-anchor="middle" fill="#B7A88E" font-family="Inter,sans-serif" font-size="11">Procedimento avulso</text>
+    <text x="${xP+bw/2}" y="${baseY+17}" text-anchor="middle" fill="#B7A88E" font-family="Inter,sans-serif" font-size="11">Plano de tratamento</text>
+  </svg>`;
 }
-function costB(cur,des){
-  if(des===null)return'';
+function valueBlockE(){
+  const ticket=ticketVal();
+  if(ticket===null)return '';
   return `<div class="cost">
-    <div class="cost-kick">${I('git-fork')} As duas formas de chegar lá</div>
-    <p class="cost-lead">Sua meta é <b>${brl(des)} por mês</b>. Existem dois caminhos até ela — e a diferença não é talento. É <b>fundação</b>.</p>
-    <div class="chart-wrap">${twoRoads(cur||0,des,'b')}<div class="chart-legend"><div class="cl"><span class="sw" style="background:#C77B66"></span> Construindo no improviso</div><div class="cl"><span class="sw" style="background:#D4B26A"></span> Com método desde o início</div></div></div>
-    <div class="cost-tag">Quem começa sem método cresce, trava e precisa desconstruir pra recomeçar. Quem começa certo só precisa acelerar.</div>
-    <div class="cost-punch">Cada mês sem fundação é um mês que você vai <b>pagar duas vezes</b>.</div></div>`;
+    <div class="cost-kick">${I('diamond')} A conta que ninguém faz no seu consultório</div>
+    <p class="cost-lead">Os mesmos <b>4 pacientes</b> na sua cadeira em uma semana. O que muda não é quantos sentam — é quanto cada atendimento vale quando você é reconhecida e fecha <b>plano de tratamento</b>, não procedimento solto.</p>
+    <div class="chart-wrap">${valueChart(ticket)}</div>
+    <div class="cost-tag">Estimativa: um plano de tratamento completo costuma valer cerca de ${PLANO_MULT}× um procedimento avulso.</div>
+    <div class="cost-punch">Que diferença esse valor faria na sua clínica, começando este mês?</div></div>`;
+}
+function valueBlockB(){
+  return `<div class="cost">
+    <div class="cost-kick">${I('diamond')} O que está em jogo</div>
+    <p class="cost-lead">Cada paciente que você atende por procedimento avulso poderia valer várias vezes mais em <b>plano de tratamento completo</b>. Construir a fundação certa desde agora separa faturar por sessão de faturar por transformação — e é o que te torna a <b>escolha óbvia</b> de quem paga.</p>
+    <div class="cost-punch">A competência você já tem. Falta torná-la visível e bem paga.</div></div>`;
 }
 
 /* ════ RENDER RESULTADO ════ */
@@ -656,7 +774,7 @@ function renderResult(){
       <div class="gauge-tierlb" style="color:${tc.c};background:${tc.bg}">${tc.lb}</div>
       <p class="gauge-note">Uma agenda magnética vive <b>acima de 70</b>. Você está em ${total} — ou seja, <b>${Math.max(0,70-total)>0?(70-total)+' pontos de potencial':'potencial'}</b> presos na gaveta, te custando dinheiro todo mês.</p>
       <div class="zone-tag">A faixa <b>70–100</b> é a Zona Magnética: onde a agenda enche sozinha.</div></div></div>`;
-    cost=costE(cur,des);
+    cost=valueBlockE();
     emoBlock=`<div class="r-sec"><div class="r-eye">${I('brain')} Diagnóstico emocional</div><div class="emo"><p>${r.emo.replace(/\n\n/g,'</p><p>')}</p>${hasMod?`<span class="mech">${MECH}</span>`:''}</div></div>`;
   } else {
     const cards=STAGE_INFO.map(st=>`<div class="score-card">
@@ -667,16 +785,16 @@ function renderResult(){
       <div class="start-panel"><div class="sp-badge">${I('map-pin')} Ponto de Partida</div>
       <h4>Sua fundação está em branco — e isso é uma vantagem.</h4>
       <p>Você não tem furos pra tapar. Tem travas pra instalar do jeito certo. Construindo na ordem, você chega na <b>Zona Magnética</b> sem nunca precisar desconstruir e recomeçar.</p></div></div>`;
-    cost=costB(cur,des);
+    cost=valueBlockB();
     emoBlock=`<div class="r-sec"><div class="r-eye">${I('brain')} Diagnóstico emocional</div><div class="emo"><p>Você não está atrasada. Está no momento em que as decisões mais importantes ainda podem ser tomadas com estratégia — antes que o improviso vire um hábito caro de corrigir.</p></div></div>`;
   }
 
   let mapaAnchor;
-  if(trail==='e' && cur!==null && des!==null){
-    let gap=des-cur; const monthly=gap>0?gap:Math.round(cur*0.15); const daily=Math.max(1,Math.round(monthly/22));
-    mapaAnchor=`<p class="mapa-anchor">Você acabou de ver: cada dia de agenda parada te custa cerca de <b>${brl(daily)}</b>. O Mapa do Magnetismo custa <b>${CFG.MAPA_PRECO}</b> — menos do que um único dia do que você já perde.</p>`;
+  const tk=ticketVal();
+  if(trail==='e' && tk!==null){
+    mapaAnchor=`<p class="mapa-anchor"><b>Um único paciente</b> que passa a fechar plano de tratamento, no lugar de procedimento solto, já cobre o Mapa <b>muitas vezes</b>.</p>`;
   } else {
-    mapaAnchor=`<p class="mapa-anchor">Começar pelo caminho certo custa <b>${CFG.MAPA_PRECO}</b> — antes que o improviso vire meses de retrabalho.</p>`;
+    mapaAnchor=`<p class="mapa-anchor">Começar pelo caminho certo custa <b>${CFG.MAPA_PRECO}</b> — e te poupa meses de improviso e retrabalho.</p>`;
   }
 
   $('result-host').innerHTML=`
@@ -685,15 +803,22 @@ function renderResult(){
       <h2 class="r-name" style="color:${r.color}">${r.name}</h2>
       <p class="r-phrase" style="color:${r.color}DD">${r.phrase.replace(/\n/g,'<br>')}</p>
     </div>
-    <div class="r-sec"><div class="r-eye">${I('compass')} O que este resultado significa</div>${r.mean.split('\n\n').map((t,i)=>`<p>${i===0&&fn?fn+', '+t.charAt(0).toLowerCase()+t.slice(1):t}</p>`).join('')}
+    <div class="r-sec"><div class="r-eye">${I('diamond')} O que este resultado significa</div>${r.mean.split('\n\n').map((t,i)=>`<p>${i===0&&fn?fn+', '+t.charAt(0).toLowerCase()+t.slice(1):t}</p>`).join('')}
       <div class="drum">${I('shield-check')}<p>Repare: <b>nenhuma</b> dessas travas é sobre a sua capacidade técnica. O problema nunca foi você. É onde a sua competência está parando de ser percebida.</p></div></div>
     ${panel}
     ${emoBlock}
     <div class="r-sec alt">${cost}</div>
     <div class="r-sec"><div class="r-cta">
-      <div class="mapa-kick">${I('map')} Do diagnóstico ao plano</div>
-      <h3 class="serif">Você recebeu o diagnóstico.<br>Agora vem o Mapa do Magnetismo.</h3>
-      <p class="mapa-promise">Aqui sou eu, <b>Liége Rodrigues</b>, que analiso pessoalmente o seu negócio, o seu posicionamento e as suas 4 vitrines. Numa reunião por Zoom, só eu e você, eu te entrego um <b>mapa personalizado</b> — com o dossiê exato do que ajustar pra ativar as vitrines da sua agenda magnética e parar de disputar paciente, sair da invisibilidade e virar a <b>escolha óbvia da sua região</b>.</p>
+      <div class="mapa-kick">${I('diamond')} Do diagnóstico ao plano</div>
+      <h3 class="serif">Você já sabe onde trava.<br>Agora vem o Mapa do Magnetismo.</h3>
+      <p class="mapa-promise">Numa reunião por Zoom, só eu e você, sou eu, <b>Liége Rodrigues</b>, que desenho com você o caminho exato até colocar de <b>4 a 10 novos pacientes</b> na sua cadeira toda semana:</p>
+      <div class="mapa-steps">
+        <div class="ms"><span class="ms-n">1</span><div><b>Diagnóstico de Posicionamento</b> — identifico os gaps e os pontos de alerta que te mantêm invisível.</div></div>
+        <div class="ms"><span class="ms-n">2</span><div><b>Estruturação do seu Protocolo Assinatura</b> — seguindo a metodologia Magnética.</div></div>
+        <div class="ms"><span class="ms-n">3</span><div><b>Ativação das 4 Vitrines</b> — pontuo tudo o que precisa ser ajustado em cada uma.</div></div>
+        <div class="ms"><span class="ms-n">4</span><div><b>Propagação Inteligente</b> — os 3 primeiros funis de captação pra conduzir os pacientes certos até você.</div></div>
+      </div>
+      <p class="mapa-promise">Você sai com um <b>mapa personalizado</b> e o passo a passo do que ajustar pra deixar de ser um segredo bem guardado e virar a <b>número 1 na cabeça dos pacientes da sua região</b> — finalmente reconhecida e bem paga pelos resultados que entrega.</p>
       <div class="mapa-meta"><span>${I('video')} Reunião por Zoom</span><span>${I('clock')} 50 a 60 minutos</span><span>${I('user-heart')} Eu e você, 1:1</span></div>
       ${mapaAnchor}
       <a class="btn btn-pri mapa-btn" href="${CFG.URL_MAPA||'#'}" target="_blank" rel="noopener">Quero meu Mapa do Magnetismo ${I('arrow-right')}</a>
@@ -708,6 +833,131 @@ function countUp(){
   function tick(t){const k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3);el.textContent=Math.round(target*e).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});if(k<1)requestAnimationFrame(tick)}
   requestAnimationFrame(tick);
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   V3 — Render premium. Copy preservada.
+═══════════════════════════════════════════════════════════════════════ */
+const V3_ASSET_DIAMOND='diamante.jpg';
+function v3StageMeta(step){
+  if(!trail && idx<2) return 1;
+  if(step && step.type==='insight') return 2;
+  if(step && step.type==='q') return 3;
+  return 3;
+}
+renderRail=function(step){
+  const rail=$('rail'); rail.style.display='flex';
+  const labels=['Boas-vindas','Um momento de clareza','Suas respostas','Quase lá','Seu diagnóstico'];
+  let now=1;
+  if(idx===0) now=1; else if(step.type==='insight') now=2; else if(step.type==='q') now=3; else now=4;
+  rail.innerHTML=labels.map((l,i)=>{const n=i+1,cls=n<now?'done':n===now?'now':'';return `<div class="rail-node ${cls}"><div class="rail-dot">${n<now?I('check'):n}</div><div class="rail-label">${l}</div></div>`}).join('');
+}
+questionHTML=function(q){
+  const sel=ANS[q.id];
+  const opts=q.opts.map((o,i)=>`<div class="opt${sel===i?' sel':''}" onclick="pick('${q.id}',${i},this)"><div class="rd"></div><span class="ot">${o}</span></div>`).join('');
+  const isLast=idx===steps.length-1;
+  return `<div class="card lux-question"><div class="card-tag">${I(q.icon)}<span class="ct-stage">${q.stage}</span><span class="ct-name">${q.name}</span></div>
+    <div class="card-body"><div class="q-text"><span class="qn">${questionList().indexOf(q)+1}</span>${q.q}</div>
+    ${q.sub?`<p class="q-sub">${q.sub}</p>`:''}
+    <div class="opts">${opts}</div>
+    <div class="nav"><button class="btn btn-ghost" onclick="back()" style="visibility:${idx===0?'hidden':'visible'}">${I('arrow-left')} Voltar</button>
+    <button class="btn btn-next${sel!==undefined?' on':''}" id="nextbtn" onclick="next()">${isLast?'Ver meu diagnóstico':'Continuar'} ${I('arrow-right')}</button></div></div></div>`;
+}
+insightHTML=function(s){
+  return `<div class="insight"><div class="lux-insight-grid">
+    <div><div class="lux-insight-kick">${I(s.icon||'diamond')} ${s.kick}</div><h3 class="lux-insight-title">${s.title}</h3><div class="lux-insight-copy">${s.html}</div><div class="lux-conclusion">Seu valor já existe. O próximo passo é revelar onde ele está deixando de ser percebido.</div><button class="btn btn-gold" onclick="next()">Continuar ${I('arrow-right')}</button></div>
+    <div class="lux-art"><div class="lux-art-card"><span class="lux-diamond-dot"></span><div class="ins-art">${illusSVG(s.illus)}</div></div></div>
+  </div></div>`;
+}
+const __renderResultLegacy=renderResult;
+renderResult=function(){
+  __renderResultLegacy();
+  const hero=document.querySelector('.r-hero');
+  if(hero && !hero.querySelector('.lux-result-art')){
+    hero.insertAdjacentHTML('afterbegin',`<div class="lux-result-art"><img src="${V3_ASSET_DIAMOND}" alt="Diamante em gaveta premium"></div>`);
+  }
+  const rname=document.querySelector('.r-name');
+  if(rname && !rname.dataset.v3){rname.dataset.v3='1'; rname.insertAdjacentHTML('beforebegin','<div class="r-eye">'+I('shield-check')+' Relatório estratégico confidencial</div>')}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   V4 — Render final aprovado | Insights + Diagnóstico
+═══════════════════════════════════════════════════════════════════════ */
+const V4_ASSETS={
+  balde:'balde.jpg',
+  vitrine:'vitrine.jpg',
+  frozen:'sim-congela.jpg',
+  conduzir:'consulta-bussola.jpg',
+  circulate:'tesouro.jpg',
+  seed:'diamante.jpg',
+  foundation:'mapa.jpg',
+  tools:'mapa.jpg',
+  diamond:'diamante.jpg',
+  mapa:'mapa.jpg'
+};
+function v4Money(n){return (n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});}
+function v4Gauge(score){
+  const angle=-88+(Math.max(0,Math.min(100,score))*1.76);
+  return `<div class="v4-gauge-title">Índice de Magnetismo™</div><svg class="v4-gauge-svg" viewBox="0 0 620 300" aria-label="Índice de Magnetismo ${score} de 100">
+  <defs><linearGradient id="v4g" x1="0" x2="1"><stop offset="0" stop-color="#69192A"/><stop offset=".45" stop-color="#B16D18"/><stop offset=".66" stop-color="#D9A13B"/><stop offset="1" stop-color="#1F7A53"/></linearGradient><filter id="v4shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#4B1E2F" flood-opacity=".18"/></filter></defs>
+  <path d="M70 250 A240 240 0 0 1 550 250" fill="none" stroke="#E8DDC7" stroke-width="42" stroke-linecap="butt"/>
+  <path d="M70 250 A240 240 0 0 1 550 250" fill="none" stroke="url(#v4g)" stroke-width="34" pathLength="100" stroke-dasharray="100 0" stroke-linecap="butt" filter="url(#v4shadow)"/>
+  ${Array.from({length:21},(_,i)=>{const a=(-180+i*9)*Math.PI/180; const r1=208,r2=i%5===0?235:225; const x1=310+r1*Math.cos(a),y1=250+r1*Math.sin(a),x2=310+r2*Math.cos(a),y2=250+r2*Math.sin(a); return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#B8873D" stroke-width="${i%5===0?2:1}" opacity=".65"/>`;}).join('')}
+  <text x="70" y="274" font-family="Fraunces" font-size="20" fill="#2A1620">0</text><text x="165" y="94" font-family="Fraunces" font-size="20" fill="#2A1620">25</text><text x="302" y="50" font-family="Fraunces" font-size="20" fill="#2A1620">50</text><text x="445" y="94" font-family="Fraunces" font-size="20" fill="#2A1620">75</text><text x="536" y="274" font-family="Fraunces" font-size="20" fill="#2A1620">100</text>
+  <g transform="rotate(${angle} 310 250)"><line x1="310" y1="250" x2="310" y2="74" stroke="#B77D2D" stroke-width="7" stroke-linecap="round"/><line x1="310" y1="250" x2="310" y2="92" stroke="#F0D08A" stroke-width="3" stroke-linecap="round"/></g>
+  <circle cx="310" cy="250" r="28" fill="#B77D2D" stroke="#E8CF9A" stroke-width="5"/><circle cx="310" cy="250" r="12" fill="#7A4B16" opacity=".7"/>
+  </svg>`;
+}
+
+insightHTML=function(s){
+  const src=V4_ASSETS[s.illus]||V4_ASSETS.balde;
+  return `<div class="v4-report-shell"><div class="v4-insight-card">
+    <div class="v4-insight-copy">
+      <div class="v4-diamond-line">${s.kick}</div>
+      <h3 class="v4-insight-title">${s.title}</h3>
+      <div class="v4-insight-text">${s.html}</div>
+      <div class="v4-note"><span class="v4-note-icon">${I('compass')}</span><span>Seu valor já existe. O próximo passo é revelar onde ele está deixando de ser percebido.</span></div>
+      <button class="btn btn-gold" onclick="next()">Continuar ${I('arrow-right')}</button>
+    </div>
+    <div class="v4-hero-art"><img src="${src}" alt="${s.kick}" loading="lazy" decoding="async"></div>
+  </div></div>`;
+};
+
+renderResult=function(){
+  const r=DIAMOND, fn=leadData.nome?leadData.nome.split(' ')[0]:'';
+  const sc=trail==='e'?stageScores():{1:0,2:0,3:0,4:0};
+  const total=trail==='e'?Math.round((sc[1]+sc[2]+sc[3]+sc[4])/4):0;
+  const worst=trail==='e'?[1,2,3,4].reduce((a,b)=>sc[b]<sc[a]?b:a,1):1;
+  const STAGE_IC={1:'eye',2:'circle-check',3:'chair',4:'diamond'};
+  const cards=STAGE_INFO.map(st=>{
+    const v=trail==='e'?sc[st.n]:0, tc=tierColor(v||0), dt=descTier(v||0), green=v>=70;
+    return `<div class="v4-score-card ${st.n===worst?'worst':''} ${green?'green':''}">
+      <div class="v4-stage">${I(STAGE_IC[st.n]||'diamond')} Etapa ${st.n} · ${st.funnel}</div>
+      <div class="v4-score-title">${st.analogy}</div>
+      <div class="v4-score-num" style="${green?'':'color:'+tc.c}">${trail==='e'?v:'—'}<small>${trail==='e'?'/100':'A construir'}</small></div>
+      <div class="v4-progress"><span style="width:${trail==='e'?v:12}%;${green?'':'background:'+tc.c}"></span></div>
+      <div class="v4-score-desc">${trail==='e'?st.d[dt]:'<b>O que você vai construir:</b> '+st.build}</div>
+      ${trail==='e'&&st.n===worst?'<span class="v4-start-here">Comece por aqui</span>':''}
+    </div>`;
+  }).join('');
+  const meaning=r.mean.split('\n\n').map((t,i)=>`<p>${i===0&&fn?fn+', '+t.charAt(0).toLowerCase()+t.slice(1):t}</p>`).join('');
+  const tk=ticketVal()||3000, plan=tk*PLANO_MULT, pacientes=12, avMes=tk*pacientes, planMes=plan*pacientes, diff=planMes-avMes;
+  let mapaAnchor=(trail==='e' && ticketVal()!==null)?`<p class="v4-anchor"><b>Um único paciente</b> que passa a fechar plano de tratamento, no lugar de procedimento solto, já cobre o Mapa <b>muitas vezes</b>.</p>`:`<p class="v4-anchor">Começar pelo caminho certo custa <b>${CFG.MAPA_PRECO}</b> — e te poupa meses de improviso e retrabalho.</p>`;
+  $('result-host').innerHTML=`<div class="v4-result"><div class="v4-result-card">
+    <section class="v4-result-hero">
+      <div class="v4-result-img"><img src="diamante.jpg" alt="Diamante na gaveta premium" loading="lazy" decoding="async"></div>
+      <div class="v4-result-copy"><div class="v4-overline">Relatório estratégico confidencial</div><h2 class="v4-result-title">${r.name}</h2><div class="v4-result-phrase">${r.phrase.replace(/\n/g,'<br>')}</div><p>Seu diagnóstico revela que você possui um valor real e diferenciador, mas ainda não está sendo percebida, posicionada nem escolhida como deveria no mercado. O potencial existe — o que falta é estratégia, posicionamento e visibilidade para transformar esse valor em magnetismo, escolhas conscientes e oportunidades alinhadas ao seu valor.</p></div>
+    </section>
+    <section class="v4-section"><div class="v4-meaning-grid"><div><div class="v4-section-title">O que este resultado significa</div>${meaning}</div><div class="v4-reframe">Repare: <b>nenhuma</b> dessas travas é sobre a sua capacidade técnica. O problema nunca foi você. É onde a sua competência está parando de ser percebida.</div></div></section>
+    <section class="v4-section"><div class="v4-score-grid">${cards}</div></section>
+    <section class="v4-section"><div class="v4-section-title" style="text-align:center;font-size:16px;font-family:Fraunces,serif;color:#5B3946;letter-spacing:.08em">Sua Agenda Magnética hoje</div><div class="v4-gauge-wrap"><div class="v4-gauge-left"><div class="v4-section-title">Pontuação geral</div><p>Seu Índice de Magnetismo™ representa o quão preparada sua prática está para atrair, converter e fidelizar pacientes de alto valor de forma estratégica e previsível.</p><hr><p>Quanto mais próximo de 100, mais magnética é a sua agenda.</p></div><div>${v4Gauge(total||58)}</div><div class="v4-gauge-score"><span class="n">${total||58}</span><span class="d">/100</span><div class="label">${total>=70?'Zona Magnética':'Em construção'}</div></div></div><div class="v4-gauge-note">Uma agenda magnética vive acima de 70. Você está em ${total||58} — ou seja, ${Math.max(0,70-(total||58))} pontos de potencial presos na gaveta, te custando dinheiro todo mês.</div><div class="v4-zone">A faixa <b>70–100</b> é a Zona Magnética: onde a agenda enche sozinha.</div></section>
+    <section class="v4-section"><div class="v4-cost-card"><div><div class="v4-diamond-line">A conta que ninguém faz no seu consultório</div><h3 class="v4-cost-headline">O mesmo número de pacientes pode gerar resultados completamente diferentes.</h3><p class="v4-cost-copy">Os mesmos <b>4 pacientes</b> na sua cadeira em uma semana. O que muda não é quantos sentam — é quanto cada atendimento vale quando você é reconhecida e fecha <b>plano de tratamento</b>, não procedimento solto.</p><div class="v4-insight-box">Um plano de tratamento completo pode representar, em média, <b>${PLANO_MULT}×</b> o valor de um procedimento avulso.</div><div class="v4-meaning-box"><b>O que isso significa para você</b><br>Crescimento não vem apenas de atrair mais pacientes. Vem de transformar valor em decisão e plano completo.</div></div><div><div class="v4-diamond-line">Comparativo de valor gerado</div><div class="v4-bars"><div class="v4-bar"><div class="label">Procedimento avulso</div><div class="value">${v4Money(tk)}</div><div class="v4-pedestal small"></div></div><div class="v4-bar"><div class="label">Plano de tratamento</div><div class="value">${v4Money(plan)}</div><div class="v4-pedestal big"></div></div><div class="v4-x"><strong>${PLANO_MULT}×</strong><br>mais valor<br>por paciente</div></div></div></div><div class="v4-metric-strip"><div class="v4-metric"><span class="v4-metric-ic">${I('user-check')}</span><div><b>Mesmo número de pacientes</b>Exemplo baseado em ${pacientes} pacientes/mês</div></div><div class="v4-metric"><span class="v4-metric-ic">${I('money')}</span><div><b>Faturamento mensal potencial</b>Procedimento Avulso: <b>${v4Money(avMes)}</b><br>Plano de Tratamento: <b>${v4Money(planMes)}</b></div></div><div class="v4-metric"><span class="v4-metric-ic">${I('trending-up')}</span><div><b>Diferença de valor</b><b>${v4Money(diff)}</b> a mais por mês<br>com o mesmo número de pacientes</div></div></div><div class="v4-fineprint">Valores ilustrativos baseados em médias de mercado. Seu cenário real pode variar.</div></section>
+    <section class="v4-section" style="padding:0"><div class="v4-cta-card"><div class="v4-cta-copy"><div class="v4-diamond-line">Do diagnóstico ao plano</div><h3 class="v4-cta-title">Você já sabe onde trava.<br>Agora vem o Mapa do Magnetismo.</h3><p>Numa reunião por Zoom, só eu e você, sou eu, <b>Liége Rodrigues</b>, que desenho com você o caminho exato até colocar de <b>4 a 10 novos pacientes</b> na sua cadeira toda semana:</p><div class="v4-steps"><div class="v4-step"><span class="v4-step-n">1</span><b>Diagnóstico de Posicionamento</b><span>identifico os gaps e os pontos de alerta que te mantêm invisível.</span></div><div class="v4-step"><span class="v4-step-n">2</span><b>Estruturação do seu Protocolo Assinatura</b><span>seguindo a metodologia Magnética.</span></div><div class="v4-step"><span class="v4-step-n">3</span><b>Ativação das 4 Vitrines</b><span>pontuo tudo o que precisa ser ajustado em cada uma.</span></div><div class="v4-step"><span class="v4-step-n">4</span><b>Propagação Inteligente</b><span>os 3 primeiros funis de captação pra conduzir os pacientes certos até você.</span></div></div><p>Você sai com um <b>mapa personalizado</b> e o passo a passo do que ajustar pra deixar de ser um segredo bem guardado e virar a <b>número 1 na cabeça dos pacientes da sua região</b> — finalmente reconhecida e bem paga pelos resultados que entrega.</p><div class="v4-chips"><div class="v4-chip">${I('video')} Reunião por Zoom</div><div class="v4-chip">${I('clock')} 50 a 60 minutos</div><div class="v4-chip">${I('user-heart')} Eu e você, 1:1</div></div>${mapaAnchor}<a class="btn btn-pri v4-cta-button" href="${CFG.URL_MAPA||'#'}" target="_blank" rel="noopener">Quero meu Mapa do Magnetismo ${I('arrow-right')}</a><div class="v4-price"><b>${CFG.MAPA_PRECO}</b> ${CFG.MAPA_PARCELAS} · vagas limitadas</div></div><div class="v4-map-art"><img src="mapa.jpg" alt="Mapa do Magnetismo plano estratégico personalizado" loading="lazy" decoding="async"></div></div></section>
+  </div></div>`;
+  show('sc-result');
+};
 
 paintIcons(document);
 </script>
